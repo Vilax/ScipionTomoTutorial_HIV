@@ -427,21 +427,26 @@ In this step the refined pseudo-subtomograms from the previous autorefine are us
 
 The reconstructed protein can be visualized with Scipion (to see the slices) or with Chimera (to see the 3D map). As it can be observed in the figure the map quality enhanced in comparison to the reconstruction at bin 6. 
 
-![reconstructParticlebin2Result](reconstructParticlebin2Result.png)
+![reconstructParticlebin2Result](figures/reconstructParticlebin2Result.png)
 
 
 ## Refine volume at bin 2
 
 
 
-## Remove duplicates 
+## Remove duplicates
+
+During the picked step it can be noted that the capsids are densely picked. Thus, the set of coordinates can be redundant. To avoid this duplicates the protocol `reliontomo - apply operation` can be used. In this step, the protocol will be used to reduce the number of picked coordinates to a non-redundant set.
+
+![removeDuplicatesBin2](figures/removeDuplicatesBin2.png)
+
 
 However, it is observed that that reconstruction is not perfectly centered in the box, presenting a slight but not neglectible displacement along the z axis. T
 
 ## Refine volume at bin 2
 
-![relionAutoRefine](relionAutorefineBin2.png)
-![relionAutorefinebin4Result](relionAutorefinebin2Result.png)
+![relionAutoRefine](figures/relionAutorefineBin2.png)
+![relionAutorefinebin4Result](figures/relionAutorefinebin2Result.png)
 
 # Contact us
 
