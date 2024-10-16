@@ -25,6 +25,13 @@ The used data for this tutorial can be found the next link:
 
 The link contains a small subsets of 5 tilt series from the EMPIAR entry [EMPIAR-10164](https://www.ebi.ac.uk/empiar/EMPIAR-10164), see the reference [B. Turonova et.al 2020](https://doi.org/10.1126/science.abd5223)
 
+
+# Workflow of this tutorial
+
+![workflowRec](figures/workflowRec.png)
+![workflowSTA](figures/workflowSTA.png)
+
+
 # Import tilt series movies
 
 **Reference**: [J. Jimenez de la Morena et.at. 2022](https://doi.org/10.1016/j.jsb.2022.107872)
