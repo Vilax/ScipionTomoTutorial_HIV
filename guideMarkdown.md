@@ -277,7 +277,7 @@ The CTF correction can be performed with the protocol `imod - correct CTF`. The 
 
 **Plugin**: [scipion-em-imod](https://github.com/scipion-em/scipion-em-imod)
 
-The CTF-corrected tilt series will be the input data for a later tomogram reconstruction. Up to this step we have worked with the full-size tilt series (binning 1). IF the tomograms are reconstructed at bin 1, they will be very heavy. To safe disc and enhance the SNR of the tomogram the tilt series will be binned in a factor 4. The protocol `imod - preprocess tilt series` allows to perform different preprocessing operation on the tilt series, as binning or adjusting the gray values. In this case a binning 4 will be applied
+The CTF-corrected tilt series will be the input data for a later tomogram reconstruction. Up to this step we have worked with the full-size tilt series (binning 1). If the tomograms are reconstructed at bin 1, they will be very heavy. To safe disc and enhance the SNR of the tomogram the tilt series will be binned in a factor 4. The protocol `imod - preprocess tilt series` allows to perform different preprocessing operation on the tilt series, as binning or adjusting the gray values. In this case a binning 4 will be applied
 
 ![imodTsPreprocess](imodTsPreprocess.png)
 
@@ -371,7 +371,6 @@ To extract the pseudo subtomograms the next input data will be required:
 ![relionTomoExtract](relionTomoExtract.png)
 
 > **Tip**: The 3D pseudo-subtomograms work better for obtaining a 3D initial model than the 2D pseudo-subtomograms.
-
 
 ## Initial model
 
