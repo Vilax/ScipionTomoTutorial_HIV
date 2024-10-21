@@ -19,14 +19,27 @@ toc-own-page: true
 
 # The dataset
 
-The used data for this tutorial can be found the next link:
+There are two dataset for this tutorial:
+- **Small dataset** ffor a quick and low resolution tutorial
+- **Large dataset**, for a high resolution subtomogram averaging
 
-[http://scipion.cnb.csic.es/downloads/scipion/data/tutorials/tomography/](http://scipion.cnb.csic.es/downloads/scipion/data/tutorials/tomography/)
+Both datasets are subsets of the EMPIAR entry [EMPIAR-10164](https://www.ebi.ac.uk/empiar/EMPIAR-10164), see the reference [B. Turonova et.al 2020](https://doi.org/10.1126/science.abd5223)
 
-The link contains a small subsets of 5 tilt series from the EMPIAR entry [EMPIAR-10164](https://www.ebi.ac.uk/empiar/EMPIAR-10164), see the reference [B. Turonova et.al 2020](https://doi.org/10.1126/science.abd5223)
+## Small dataset tutorial 
 
+It only contains a single tilt series. This workflow is ideal to be executed in a normal laptop with GPU. The data set can be downloaded using the next command
+
+> scipion3 testdata --download reliontomo_STA_HIV_smalldataset
+
+. Alternatively with the next link [https://scipion.cnb.csic.es/downloads/scipion/data/tests/reliontomo_STA_HIV_smalldataset/](https://scipion.cnb.csic.es/downloads/scipion/data/tests/reliontomo_STA_HIV_smalldataset/)
+
+## Large dataset tutorial
+
+The link contains a small subsets of 5 tilt series (TS_01, TS_03, TS_43, TS_45, TS_54) from the EMPIAR entry [EMPIAR-10164](https://www.ebi.ac.uk/empiar/EMPIAR-10164). The tilt series and the mdoc files can be downloaded from [https://zenodo.org/records/11068319](https://zenodo.org/records/11068319).
 
 # Workflow of this tutorial
+
+The workflow of this tutorial can be summarized in the next figures.
 
 ![workflowRec](figures/workflowRec.png)
 ![workflowSTA](figures/workflowSTA.png)
