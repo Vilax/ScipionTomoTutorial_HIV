@@ -30,7 +30,7 @@ The link contains a small subsets of 4 tilt series from the EMPIAR entry [EMPIAR
 
 This tutorial aims to show non-oriented picking possibilities in ScipionTomo. The next workflow will be used
 
-![workflowRec](figures/workflowRec.png)
+[workflowRec](figures/workflowRec.png)
 
 # Import and tomogram reconstruction 
 

@@ -41,8 +41,8 @@ This tutorial makes use of 5 tilt series, with the next identifiers: TS_01, TS_0
 
 The workflow of this tutorial can be summarized in the next figures. Use the this workflow to follow the different steps of the next sections
 
-![workflowRec](figures/workflowRec.png)
-![workflowSTA](figures/workflowSTA.png)
+![workflowRec](HIVTutorial/workflowRec.png)
+![workflowSTA](HIVTutorial/workflowSTA.png)
 
 
 # Import tilt series movies
@@ -72,7 +72,7 @@ The used parameters are shown in the Figure. The critical ones are:
 - **Amplitude contrast:**  0.1
 - **Pixel size:** 0.675  A/px. By setting this parameter the pixel size from the mdoc will be overwritten.
   
-![Import tilt series movies Scipion form](figures/ImportTsmovies.png)
+![Import tilt series movies Scipion form](HIVTutorial/ImportTsmovies.png)
 
 # Movie alignment
 
@@ -86,7 +86,7 @@ This protocol can be executed with default values. It will align all frames that
 
 > **Note**: The input tilt series movies of this dataset where acquired in superresolution mode. For this reason a binning 2 was introduced.
 
-![Motioncorr - ts movie alignment form](figures/MotionCor.png)
+![Motioncorr - ts movie alignment form](HIVTutorial/MotionCor.png)
 
 The most important parameters are:
 - **Input Tilt-Series (movies):** The imported set of tilt series movies from the previous step.
@@ -104,7 +104,7 @@ The most important parameters are:
 
 The interaction of electrons with the sample can generate X-rays. They can be detected by the camera, and identified in the images as very bright pixels. Therefore, the X-ray peaks are an unwanted effect that should be corrected. The protocol `imod - Xray eraser` allows to remove these bright points. The input will be a tilt series (output of the movie alignment). This protocol also can be executed with default parameters.
 
-![FormXrayEraser](figures/XrayEraser.png)
+![FormXrayEraser](HIVTutorial/XrayEraser.png)
 
 # Dose filter
 
@@ -120,7 +120,7 @@ The protocol can be executed with the default parameters.
 
 > **Warning**: As a consequence of the dose filter, the output tilt series will present a zero dose values (see output with tomoViewer). If the dose filtered tilt series are later aligned, then it will be neccesary to associate the alignment to the unfiltered tilt series (using `tomo - assign alignment`). Otherwise the subtomogram averaging algorithms that make use of the dose will work in a suboptimal manner.
 
-![FormDoseFilter](figures/DoseFilter.png)
+![FormDoseFilter](HIVTutorial/DoseFilter.png)
 
 
 # Tilt series alignment
@@ -160,7 +160,7 @@ The protocol can be executed with default parameters:
 
 > **Note**: The output of this protocol is a set of tilt series. In the summary, the output tilt series presents a `+ali` flag. This flag informs about the alignment, the tilt series present an associated transformation matrix (with the estimated shifts). **The +ali indicates that matrix is associated as metadata but not applied to the tilt series**. To visualize the algined tilt series the flag of the protocol `generate interpolated tilt-series` must be enable. In the summary, the interpolated tilt series can be identified with the flag `!interp`.
 
-![FormCoarseAlignment](figures/CoarseAlignment.png)
+![FormCoarseAlignment](HIVTutorial/CoarseAlignment.png)
 
 
 ### IMOD - generate fiducial model
@@ -177,13 +177,13 @@ We will use as input of this algorithm the previous *non-interpolated* Tilt Seri
 - **Find on two surfaces**: Yes
 - **Track with fiducial model as seed**: Yes
 
-![FormGenerateFiducialModel](figures/GenerateFiducialModel.png)
+![FormGenerateFiducialModel](HIVTutorial/GenerateFiducialModel.png)
 
 > **Tip**: In samples with gold beads (fiducials), it is important to properly set the fiducial radius (in nanometers) since, if the indicated size is significantly different from the real one, the algorithm will fail in the fiducial location and posterior tracking. Also, it is possible to set the algorithm to differentiate between those gold beads that are in front (or over) the sample and the ones that are in the rear part (or under it), using the *Find on two surfaces option*. 
 
 The output of this protocol is a `SetOfLandmarkModels`. This object is able to store the position information of each gold bead through the tilt-series for every tilt series belonging to the set. It is possible to visualize this object with the imod viewer
 
-![outputGenerateFiducialModel](figures/outputGenerateFiducialModel.png)
+![outputGenerateFiducialModel](HIVTutorial/outputGenerateFiducialModel.png)
 
 
 ### IMOD - fiducial alignment
@@ -205,7 +205,7 @@ To execute the protocol the next paramaters are used:
 -- **Tilt angle solution type**: Yes at binning 2
 -- **Distorsion solution type**: Disable
 
-![FormFiducialAlignment](figures/FiducialAlignment.png)
+![FormFiducialAlignment](HIVTutorial/FiducialAlignment.png)
 
 > **Tip**: To validate the tilt series alignment, the output interpolated tilt series should be visualized. 
 
@@ -215,7 +215,7 @@ The output tilt series as result of the alignment process can be visualized with
 
 > **Note**: The output tilt series present a dose equal to zero. This is because the tilt series were dose filtered in a previous step.
 
-![outputFiducialAlignmentviewer](figures/outputFiducialAlignmentviewer.png)
+![outputFiducialAlignmentviewer](HIVTutorial/outputFiducialAlignmentviewer.png)
 
 > **Tip**: The `TomoViewer` can be used to check the transformation matrix, the refined tilt angles.
 
@@ -224,11 +224,11 @@ The output tilt series as result of the alignment process can be visualized with
 
 When the dose filter was applied to align the tilt series, the dose of the aligned tilt series was set to zero. The does filter helped for aligning tilt series. Unfortunately, some subtomogram averaging protocols requires unfiltered tilt series, it means without dose filtering. For this reason, it would be usefull to assign the alignment information to the tilt non-dose filtered tilt series. This task can be carried out with the protocol `tomo - tilt-series assign alignment`. The protocol involves two tilt series: One to take the alignment and other to set the alignment. In this tutorial the transformation matrix from the alignment will be set to the output of the x-ray eraser tilt series (see the workflow).
 
-![FormtiltseriesAssignAlignment](figures/tiltseriesAssignAlignment.png)
+![FormtiltseriesAssignAlignment](HIVTutorial/tiltseriesAssignAlignment.png)
 
 Note that the output of `tomo - tilt-series assign alignment` presents a non-zero dose. This can be checked by by visualizing the tilt series with `TomoViewer`, see figure.
 
-![resultAssignTransform](figures/resultAssignTransform.png)
+![resultAssignTransform](HIVTutorial/resultAssignTransform.png)
 
 
 # CTF estimation
@@ -264,11 +264,11 @@ The CTF will be estimated with the protocol `cistem - tilt-series ctffind`. The 
 > **Tip**: A narrow defocus range ensure a better defocus estimation. A good approach is to provide a range centered in the nominal defocus of the tilt series acquisition. This information is contained in the mdoc files.
 
 
-![FormCTFfind5](figures/CTFfind5.png)
+![FormCTFfind5](HIVTutorial/CTFfind5.png)
 
 The result of any CTF estimation that can be visualized by clicking on Analyze results or alternatively by right-clicking on the output, in the Summary panel (low area of the main Scipion window). The viewer will open a window with the list of SetOfCTFTomoSeries corresponding to each tilt series. In this window the defocus, astigmatism and resolution associated to each tilt image can be visualized. Also, the window presents a summary plot with the defocus and resolution per tilt image. This plot will be of special interest to validate the estimation of the CTF.
 
-![CTFviewer](figures/CTFviewer.png)
+![CTFviewer](HIVTutorial/CTFviewer.png)
 
 # Excluding views and CTFs
 
@@ -289,13 +289,13 @@ To exclude a tilt images just select the corresponding image and press the `spac
 - **Re-stack**: A new stack of tilt series will be created without the excluded views. From this point the later protocols will not have access to the excluded views.
 - **Marked as excluded**: The excluded views are marked but not removed from the stack. The later protocols will process these images (if it is possible, this depends on the protocol), but they will be kept marked as excluded. This allows to rescue the views.
 
-![excludeTsViewer](figures/excludeTsViewer.png)
+![excludeTsViewer](HIVTutorial/excludeTsViewer.png)
 
 ## Excluding CTFs
 
 CTFs can be excluded with the `CTFTomoViewer`. The main reasons to exclude a CTF are: a bad estimation of the defocus value, or a high astigmatism. To exclude a CTF just select the corresponding CTF and press the `space`, alternatively it can be marked by clicking on the exclude box. The excluded CTFs will be highlighted in red. Finally, it is neccesary to generate a new set of CTF by clicking on the botton `Generate subsets`. 
 
-![excludeCTFViewer](figures/excludeCTFViewer.png)
+![excludeCTFViewer](HIVTutorial/excludeCTFViewer.png)
 
 # CTF correction
 
@@ -307,7 +307,7 @@ CTFs can be excluded with the `CTFTomoViewer`. The main reasons to exclude a CTF
 
 The CTF correction can be performed with the protocol `imod - correct CTF`. The input of this protocol are the tilt series with assigned alignment and a set of CTFs previously estimated. The tilt series will be the ones we assigned the alignment information. The used parameters for this protocol will be left as default parameters.
 
-![FormImodCTFcorr](figures/imodCTFcorr.png)
+![FormImodCTFcorr](HIVTutorial/imodCTFcorr.png)
 
 # Tilt series preprocess
 
@@ -320,7 +320,7 @@ The CTF-corrected tilt series will be the input data for a later tomogram recons
 > For the tutorial that uses the small dataset, use bin 6
 > For the tutorial that uses the large dataset, use bin 4
 
-![imodTsPreprocess](figures/imodTsPreprocess.png)
+![imodTsPreprocess](HIVTutorial/imodTsPreprocess.png)
 
 ## Tomogram reconstruction
 
@@ -348,11 +348,11 @@ To reconstruct the tomogram from the tilt series the protocol `tomo3d - reconstr
 
 The input of the reconstruction will be the binned CTF corrected tilt series. A SIRT recontruction is recommended in this case to produced tomograms with high contrast. The `Tomogram Thickness` was set to 300 voxels.
 
-![tomo3d](figures/tomo3d.png)
+![tomo3d](HIVTutorial/tomo3d.png)
 
 The output can be visualized by clicking on Analyze results or alternatively by choosing the visualization tool by right-clicking on the output in the Summary box.
 
-![tomo3dSIRTtomo](figures/tomo3DSIRT.png)
+![tomo3dSIRTtomo](HIVTutorial/tomo3DSIRT.png)
 
 
 # Directional picking with dynamo
@@ -371,13 +371,13 @@ This section shows how to pick with dynamo, however, to avoid the manual task of
 
 The reconstructed present several several HIV virus. In our case we are interested in the reconstruction of structure of the immature capsid lattice. To do that, tt is neccesary to identify the capsid in the tomograms. The protocol `dynamo - vectorial picking` will be used. The parameter boxsize only has a visualization purpose (size of the plotted points on the tomogram), it does not affect to the picked coordinates.
 
-![dynamoPicking](figures/dynamoPicking.png)
+![dynamoPicking](HIVTutorial/dynamoPicking.png)
 
 > **Note**: For the small set tutorial a single virus will be picked. The one that belong to the TS_03 that has less number of fiducials around. For the large dataset tutorial, all viruses will be picked. To avoid manual picking the coordinates can be imported later in te tutorial.
 
 When the protocol is executed, a new window with the list of tomograms to be picked will appear. By double clicking on a tomogram the dynamo picking interface will be opened. Dynamo hsa different kinds of geometrical pickers. Due to the geometry of the HIV virus an ellipsoidal vesicle model will be used to fit the geometry of the HIV. By means of this model, the virus capsid will be manually picked, as it is shown in the figure. Then, it will be neccesary to select on the capsid contour placing the mouse pointer on the capsid and using the key `c` to fix a marker. Once the capsid of a virus has been picked, a new model (ellipsoidal vesicle) will be created and the process repeated until end with the picking of all viruses presented the tomogram. Then, the dynamo interface can be closed and the list window with the list of tomogram will be updated with the number of picked coordinates in the already picked tomogram.
 
-![dynamoPickerInterface](figures/dynamoPickerInterface.png)
+![dynamoPickerInterface](HIVTutorial/dynamoPickerInterface.png)
 
 > **Note**: Dynamo picker is an oriented picker. This means that the picked coordinates have an orientation (transformation matrix). The orientation will be the normal direction to the picked surface.
 
@@ -388,9 +388,9 @@ When the protocol is executed, a new window with the list of tomograms to be pic
 
 The protocol `dynamo - model workflows` uses the picked set of meshed as result of the protocol `dynamo - vectorial picking` and provides a 
 
-![dynamoModelWorkflow](figures/dynamoModelWorkflow.png)
+![dynamoModelWorkflow](HIVTutorial/dynamoModelWorkflow.png)
 
-![coordinatesHIV](figures/coordinatesHIV.png)
+![coordinatesHIV](HIVTutorial/coordinatesHIV.png)
 
 
 ## Importing coordinates
@@ -403,10 +403,10 @@ To avoid the manual picking, a sqlite file with all picked coordinates for this 
   
 > **Note**: ScipionTomo has other protocol to import coordinates that do not requires sqlite files, it is called `tomo - import coordinates`.
 
-![importCoordinates](figures/importCoordinates.png)
+![importCoordinates](HIVTutorial/importCoordinates.png)
 
 If the imported coordinates are opened with dynamo viewer, the next result should be visualized. This result is identical to the obtained one with the protocol `dynamo - model workflow`.
-![coordinatesHIV](figures/coordinatesHIV.png)
+![coordinatesHIV](HIVTutorial/coordinatesHIV.png)
 
 # Subtomogram Averaging with RelionTomo
 
@@ -430,7 +430,7 @@ To extract the pseudo subtomograms the next input data will be required:
 
 > **Note** This protocol will be executed twice using the same parameters, but first writing output as 3D and later as 2D pseudo-subtomogram. 
 
-![relionTomoExtract](figures/relionTomoExtract.png)
+![relionTomoExtract](HIVTutorial/relionTomoExtract.png)
 
 > **Tip**: The 3D pseudo-subtomograms work better for obtaining a 3D initial model than the 2D pseudo-subtomograms.
 
@@ -444,10 +444,10 @@ The initial model can be estimated with the protocol `reliontomo - 3D initial mo
 - **Circular Mask diameter**: 350 A. A good value is to set the protein diameter
 - **Symmetry group**: C6. In this case the protein has C6 symmetry. For initial volumes a C1 symmetry is recommended.
 - **Prior width on tilt angle**: 10. degrees. It defines the prior on the tilt to be estimated
-![relionInitialModel](figures/relionInitialModel.png)
+![relionInitialModel](HIVTutorial/relionInitialModel.png)
 
 The result of this protocol should be similar to the one shown in the Figure. To visualize it, the average map can be opened with Scipion or Chimera.
-![reliontomoInitialModelResult](figures/reliontomoInitialModelResult.png)
+![reliontomoInitialModelResult](HIVTutorial/reliontomoInitialModelResult.png)
 
 ## 3D Auto-refine
 
@@ -459,12 +459,12 @@ Using the initial model, it is possible to refine it to enhance the map quality 
 - **Prior width on tilt angle**: 
 - **Prior width on tilt angle**: 
 
-![relionAutoRefine](figures/relionAutorefineBin4.png)
+![relionAutoRefine](HIVTutorial/relionAutorefineBin4.png)
 
 
-![reliontomoInitialModelResult](figures/reliontomoInitialModelResult.png)
+![reliontomoInitialModelResult](HIVTutorial/reliontomoInitialModelResult.png)
 The result of this protocol should be similar to the one shown in the Figure. Note that the FSC reach Nyquist frequency allowing to reduce the binning, and the average map is in agreement with this resolution.
-![relionAutorefinebin4Result](figures/relionAutorefinebin4Result.png)
+![relionAutorefinebin4Result](HIVTutorial/relionAutorefinebin4Result.png)
 
 
 ## Extract pseudo-subtomograms at bin 2
@@ -478,18 +478,18 @@ This steps shows how to reduce the binning keeping the alignment of already refi
 - **Box size (px)**: 256 px. This box size will be used to correct the CTF in the cropped particles from the tilt series
 - **Croppped box size (px)**: 128 px. This will be the size of the pseudo-subtomograms and therefore of the reconstructed map.
 - **Write output as 2D stacks**: Set Yes for refinin 2D pseudo-subtomograms are recommended
-![extractbin2](figures/extractbin2.png)
+![extractbin2](HIVTutorial/extractbin2.png)
 
 
 ## Reconstruct particle at bin 2
 
 In this step the refined pseudo-subtomograms from the previous autorefine are used to reconstruct the protein, but keeping their angular assignment. This is only a reconstruction step. The protocol `reliontomo - reconstruct particle` 
 
-![relionReconstructParticlebin2](figures/relionReconstructParticlebin2.png)
+![relionReconstructParticlebin2](HIVTutorial/relionReconstructParticlebin2.png)
 
 The reconstructed protein can be visualized with Scipion (to see the slices) or with Chimera (to see the 3D map). As it can be observed in the figure the map quality enhanced in comparison to the reconstruction at bin 6. 
 
-![reconstructParticlebin2Result](figures/reconstructParticlebin2Result.png)
+![reconstructParticlebin2Result](HIVTutorial/reconstructParticlebin2Result.png)
 
 
 ## Refine volume at bin 2
@@ -500,15 +500,15 @@ The reconstructed protein can be visualized with Scipion (to see the slices) or 
 
 During the picked step it can be noted that the capsids are densely picked. Thus, the set of coordinates can be redundant. To avoid this duplicates the protocol `reliontomo - apply operation` can be used. In this step, the protocol will be used to reduce the number of picked coordinates to a non-redundant set.
 
-![removeDuplicatesBin2](figures/removeDuplicatesBin2.png)
+![removeDuplicatesBin2](HIVTutorial/removeDuplicatesBin2.png)
 
 
 However, it is observed that that reconstruction is not perfectly centered in the box, presenting a slight but not neglectible displacement along the z axis. T
 
 ## Refine volume at bin 2
 
-![relionAutoRefine](figures/relionAutorefineBin2.png)
-![relionAutorefinebin4Result](figures/relionAutorefinebin2Result.png)
+![relionAutoRefine](HIVTutorial/relionAutorefineBin2.png)
+![relionAutorefinebin4Result](HIVTutorial/relionAutorefinebin2Result.png)
 
 # Contact us
 
