@@ -357,7 +357,7 @@ The output can be visualized by clicking on Analyze results or alternatively by 
 
 # Directional picking with dynamo
 
-**Reference**: [J.I. Agulleiro 2011](https://doi.org/10.1093/bioinformati   s/btq692)
+**Reference**: [D. Castaño-Diez et.al 2012](https://doi.org/10.1016/j.jsb.2011.12.017)
 
 **Plugin**: [scipion-em-dynamo](https://github.com/scipion-em/scipion-em-dynamo)
 

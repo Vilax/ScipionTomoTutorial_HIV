@@ -19,11 +19,11 @@ toc-own-page: true
 
 # The dataset
 
-The used data for this tutorial can be found the next link
+The used data for this tutorial can be found the next link [https://scipion.cnb.csic.es/downloads/scipion/data/tests/nonOrientedPicking_tutorial/](https://scipion.cnb.csic.es/downloads/scipion/data/tests/nonOrientedPicking_tutorial/) or also can be downloaded using the next command line
 
-[http://scipion.cnb.csic.es/downloads/scipion/data/tutorials/tomography/](http://scipion.cnb.csic.es/downloads/scipion/data/tutorials/tomography/)
+> scipion3 testdata --download nonOrientedPicking_tutorial
 
-The link contains a small subsets of 4 tilt series from the EMPIAR entry [EMPIAR-10064](https://www.ebi.ac.uk/empiar/EMPIAR-10064), see the reference [M. Khoshouei et.al 2017](https://doi.org/10.1016/j.jsb.2016.05.009). This extrey consider different kinds of acquisitions, the used one for this tutorial is the CTEMmixed one.
+The link contains a small subsets of 4 tilt series from the EMPIAR entry [EMPIAR-10064](https://www.ebi.ac.uk/empiar/EMPIAR-10064), see the reference [M. Khoshouei et.al 2017](https://doi.org/10.1016/j.jsb.2016.05.009). This entry considers presents different acquisitions, the used one for this tutorial is the CTEMmixed.
 
 
 # Workflow of this tutorial
@@ -69,15 +69,17 @@ To reconstruct the tomogram from the tilt series the protocol `tomo3aretomo - ti
 
 The used parameters will be
 
+- **Input Tilt Series**: This set will be the imported tilt series
 - **Skip alignment**: No
-- 
-- 
 - **Reconstruct tomograms**: Yes
-- 
-- 
-- 
-- 
-
+- **Binning**: 4. The tomogram will be reconstructed at bin 4
+- **Volume height for alignment**: 600
+- **Tomogram thickness**: 1200
+- **Refine tilt angles?**: Measure and correct
+- **Refine tilt axis angle?** Refine and calculate
+- **Do dose weighting?**: Yes
+- **Reconstruction method**: WBP
+- **Dark tolerance**: 0.7
 
 The input of the aretomo will be the imported tilt series. To reduce the computational burden, the WBP algorithm will be chosen, and the tomomgrams will be reconstructed at binning 4.
 
@@ -87,7 +89,6 @@ The output can be visualized by clicking on Analyze results or alternatively by 
 
 ![aretomoTomogram](nonOrientedPicking/aretomoTomogram.png)
 
-![aretomoTomogramResults](nonOrientedPicking/aretomoTomogramResults.png)
 
 # Cryolo Picking
 
@@ -104,28 +105,44 @@ Subtomograms can be picked in the tomogram using the cryolo program of the sphir
 
 The used parameters were:
 
-- Input tomograms:
-- asfdasfd
-- sdf
-- 
+- **Tomograms**: The reconstructed ones 
+- **Picking model**: general cryo (low pass filtered)
+- **Confidence threshold**: 0.4
+- **Low pass filter**: No
+- **Number of CPU**: 4
+- **Box size**: 50
 
 ![cryoloPickingResults](nonOrientedPicking/cryoloPicking.png)
 ![cryoloPickingResults](nonOrientedPicking/cryoloPickingResults.png)
 
 # Template matching
 
-**Reference**: [S. Zheng 2022](https://doi.org/10.1016/j.yjsbx.2022.100068)
+**Reference**: [S. Zheng 2019](https://doi.org/10.1016/j.yjsbx.2022.100068)
 
-**Plugin**: [scipion-em-emantomo](https://github.com/scipion-em/scipion-em-emantomo
+**Plugin**: [scipion-em-emantomo](https://github.com/scipion-em/scipion-em-emantomo)
 
+## Import a reference
+
+![templateMatching](nonOrientedPicking/importVolume.png)
+
+## Resize the reference
+
+![relionCropResize](nonOrientedPicking/relionCropResize.png)
+
+## Emantomo template matching
 The used parameters were:
 
-- Input tomograms:
-- asfdasfd
-- sdf
-- 
+- **Tomograms**: The reconstructed ones
+- **Reference volume**: The imported one from emdb
+- **Maximum number of coordinates**: 1000
+- **Angular sampling**: 30º
+- **Distance threshold**: -1. This means half of the boxsize
+- **Template matching threshold**: 6
+- **Symmetry of the reference**: c1
+- **Remove particles on the edge**: Yes
+- **Remove particles close to fiducials**: Yes
 
-![templateMatching](nonOrientedPicking/templateMatching.png)
+![templateMatching](nonOrientedPicking/templateMatchingEman.png)
 
 
 
@@ -142,18 +159,3 @@ Tutorials about Scipion use, and cryoEM seminars can be found on your YouTube ch
 Youtube: https://www.youtube.com/user/BiocompWebs
 
 We also have a slack channel where our most active members keep in touch daily. You can request access on scipion@cnb.csic.es
-
-
-# References
-- JM De la Rosa-Trevín, A Quintana, L Del Cano, et al. Scipion: A software framework toward integration, reproducibility and validation in 3D electron microscopy, Journal of Structural Biology, 195,1, 93-99 (2016).
-- A. Burt, C.K. Cassidy, P. Ames, P. et al. Complete structure of the chemosensory array core signalling unit in an E. coli minicell strain. Nat Commun 11, 743 (2020).
-- B. Turoňová B, M. Sikora, C. Schürmann, et. al. In situ structural analysis of SARS-CoV-2 spike reveals flexibility mediated by three hinges, Science 370 203-208 (2020)
-- J.R. Kremer, D.N. Mastronarde, J.R McIntosh, Computer Visualization of Three-Dimensional Image Data Using IMOD, Journal of Structural Biology, 116, 1, 71-76 (1996)
-- D.N. Mastronarde, S.R. Held, Automated tilt series alignment and tomographic reconstruction in IMOD, Journal of Structural Biology, 197, 2, 102-113 (2017)
-- JI Agulleiro, JJ Fernandez. Fast tomographic reconstruction on multicore computers. Bioinformatics 27:582-583, (2011).
-- JI Agulleiro, JJ Fernandez. Tomo3D 2.0--exploitation of advanced vector extensions (AVX) for 3D reconstruction. Journal of Structural Biology 189:147-152, (2015).
-- A. Rohou, N. Grigorieff, CTFFIND4: Fast and accurate defocus estimation from electron micrographs, Journal of Structural Biology, 192, 2, (2015)
-- M. Chen, J.M. Bell, X. Shi, X. et al. A complete data processing workflow for cryo-ET and subtomogram averaging. Nat Methods 16, 1161–1168 (2019) 
-- Q. Xiong, M.K. Morphew, C.L. Schwartz, CTF Determination and Correction for Low Dose Tomographic Tilt Series, Journal of Structural Biology, 168(3) 378–387 (2009). 
-- B. Turoňová, F.K.M. Schur, W. Wan, and  J.A.G. Briggs, Efficient 3D-CTF correction for cryo-electron tomography using NovaCTF improves subtomogram averaging resolution to 3.4 Å, Journal of Structural Biology, 199, 3, 187-195, 2017
-
