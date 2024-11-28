@@ -39,6 +39,27 @@ This tutorial makes use of 5 tilt series, with the next identifiers: TS_01, TS_0
 
 The tilt series and the mdoc files can be downloaded using the next  [script](https://zenodo.org/records/11068319).
 
+```
+for i in 01 03 43 45 54;
+do
+    echo "======================================================"
+    echo "================= Downloading TS_${i} ================"
+    # download the mdoc file
+    wget \
+    --timestamping \
+    --no-directories \
+    --directory-prefix ./mdoc \
+    ftp://ftp.ebi.ac.uk/empiar/world_availability/10164/data/mdoc-files/TS_${i}.mrc.mdoc;
+
+    # download the frames
+    wget \
+    --timestamping \
+    --no-directories \
+    --directory-prefix ./frames \
+    ftp://ftp.ebi.ac.uk/empiar/world_availability/10164/data/frames/TS_${i}_*.mrc;
+done
+```
+
 # Workflow of this tutorial
 
 The workflow of this tutorial can be summarized in the next figures. Use the this workflow to follow the different steps of the next sections
