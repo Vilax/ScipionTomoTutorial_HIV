@@ -37,7 +37,7 @@ Alternatively, the dataset can be found in the next link [https://scipion.cnb.cs
 
 This tutorial makes use of 5 tilt series, with the next identifiers: TS_01, TS_03, TS_43, TS_45, TS_54. These tilt series are a subset of the EMPIAR entry [EMPIAR-10164](https://www.ebi.ac.uk/empiar/EMPIAR-10164). 
 
-The tilt series and the mdoc files can be downloaded using the next  [script](https://zenodo.org/records/11068319).
+The tilt series and the mdoc files can be downloaded using the next shell [script](https://zenodo.org/records/11068319).
 
 ```
 for i in 01 03 43 45 54;
