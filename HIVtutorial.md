@@ -113,7 +113,7 @@ The most important parameters are:
 - **Input Tilt-Series (movies):** The imported set of tilt series movies from the previous step.
 - **Frames to Align:** This is the range of frames per tilt image to be aligned. If the parameter `to` is empty, then all frames will be aligned
 - **Use align frames range to sum:** Yes. 
-- **Binning factor:** 2
+- **Binning factor:** 2. Because this movies were acquired in superresolution mode
 - **Split & sum odd/even frames:** No
 
 
