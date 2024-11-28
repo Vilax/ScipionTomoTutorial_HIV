@@ -19,7 +19,7 @@ toc-own-page: true
 
 # The dataset
 
-There are two dataset for this tutorial:
+This tutorial can be carried out with:
 - **Small dataset**: Quick tutorial with a single tilt series (recommended), it obtains a low resolution map.
 - **Large dataset**: Long tutorial with 5 tilt series, it obtains a high reoslution structure.
 
@@ -35,7 +35,9 @@ Alternatively, the dataset can be found in the next link [https://scipion.cnb.cs
 
 ## Large dataset tutorial
 
-This tutorial makes use of 5 tilt series, with the next identifiers: TS_01, TS_03, TS_43, TS_45, TS_54. These tilt series are a subset of the EMPIAR entry [EMPIAR-10164](https://www.ebi.ac.uk/empiar/EMPIAR-10164). The tilt series and the mdoc files can be downloaded from [https://zenodo.org/records/11068319](https://zenodo.org/records/11068319).
+This tutorial makes use of 5 tilt series, with the next identifiers: TS_01, TS_03, TS_43, TS_45, TS_54. These tilt series are a subset of the EMPIAR entry [EMPIAR-10164](https://www.ebi.ac.uk/empiar/EMPIAR-10164). 
+
+The tilt series and the mdoc files can be downloaded using the next  [script](https://zenodo.org/records/11068319).
 
 # Workflow of this tutorial
 
