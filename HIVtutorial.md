@@ -241,6 +241,18 @@ The output tilt series as result of the alignment process can be visualized with
 > **Tip**: The `TomoViewer` can be used to check the transformation matrix, the refined tilt angles.
 
 
+# Fiducial eraser
+
+**Reference**: [TeamTomo](https://github.com/teamtomo/fidder)
+
+**Plugin**: [scipion-em-fidder](https://github.com/scipion-em/scipion-em-fidder)
+
+Fiducials markers were used to tilt series, due to their high contrast. However, the strong signal of the gold beads can introduce artifacts in the reconstruction. Specially, the artifacts can complicate the tomogram interpretation and introduce errors in the use of image processing algorithms as: Picking and sutomogram averaging.
+
+![fidderForm](HIVTutorial/fidderForm.png)
+![outputfidder](HIVTutorial/outputfidder.png)
+
+
 # Assign transformation matrix to Tilt series
 
 When the dose filter was applied to align the tilt series, the dose of the aligned tilt series was set to zero. The does filter helped for aligning tilt series. Unfortunately, some subtomogram averaging protocols requires unfiltered tilt series, it means without dose filtering. For this reason, it would be usefull to assign the alignment information to the tilt non-dose filtered tilt series. This task can be carried out with the protocol `tomo - tilt-series assign alignment`. The protocol involves two tilt series: One to take the alignment and other to set the alignment. In this tutorial the transformation matrix from the alignment will be set to the output of the x-ray eraser tilt series (see the workflow).
