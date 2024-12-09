@@ -250,7 +250,7 @@ The output tilt series as result of the alignment process can be visualized with
 Fiducials markers were used to tilt series, due to their high contrast. However, the strong signal of the gold beads can introduce artifacts in the reconstruction. Specially, the artifacts can complicate the tomogram interpretation and introduce errors in the use of image processing algorithms as: Picking and sutomogram averaging.
 
 ![fidderForm](HIVTutorial/fidderForm.png)
-![outputfidder](HIVTutorial/outputfidder.png)
+![outputfidder](HIVTutorial/outputFidder.png)
 
 
 # Assign transformation matrix to Tilt series
