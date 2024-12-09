@@ -216,7 +216,7 @@ Once the landmark (fiducial) models are generated it is possible to calculate th
 The protocol `imod -fiducial alignment` will make use of the `SetOfLandmarkModels` as result of the previous protocol and will try to solve the geometry to find the transformation matrix per tilt image that explains the landmark model as rotations of the sample around the Y axis.  
 
 To execute the protocol the next paramaters are used:
-- **Input**:
+- **Input**: 
 -- **Fiducial model**: The set of landmarks obtained in the previous protocol, `imod - generate fiducial model`.
 -- **Assume beads on two surfaces**: Yes
 -- **Generate interpolated tilt series**: Yes at binning 4
@@ -247,9 +247,17 @@ The output tilt series as result of the alignment process can be visualized with
 
 **Plugin**: [scipion-em-fidder](https://github.com/scipion-em/scipion-em-fidder)
 
-Fiducials markers were used to tilt series, due to their high contrast. However, the strong signal of the gold beads can introduce artifacts in the reconstruction. Specially, the artifacts can complicate the tomogram interpretation and introduce errors in the use of image processing algorithms as: Picking and sutomogram averaging.
+Fiducials markers were used to tilt series, due to their high contrast. However, the strong signal of the gold beads can introduce artifacts in the reconstruction. Specially, the artifacts can complicate the tomogram interpretation and introduce errors in the use of image processing algorithms as: Picking and sutomogram averaging. These effects can be avoided by erasingthe fiducial markers in the images. To do that the protocol `fidder - detect and erase fiducials` can be used. Fidder uses a U-net (deep learning) trained at 8A/px to segment the fiducials. In a second step, the segmented fiducial markers are substituted with white noise matching the local mean and global standard deviation of the image. Fidder only presents a free parameter, the threshold, which aims to determine probability threshold for deteting the gold beads. An strict value of 0.9 should work with this data set. The figures
+
+To execute the protocol the next paramaters are used:
+- **Input**:
+-- **Tilt series**: The raw tilt series as result of the xray eraser, `imod - xray eraser`.
+-- **Threshold**: 0.9
 
 ![fidderForm](HIVTutorial/fidderForm.png)
+
+The result of the protocol can be observed in the next figure
+
 ![outputfidder](HIVTutorial/outputFidder.png)
 
 
