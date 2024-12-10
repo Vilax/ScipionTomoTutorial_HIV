@@ -422,8 +422,8 @@ When the protocol is executed, a new window with the list of tomograms to be pic
 
 It is not neccesary to pick the complete surface of the virus, dynamo just requires some points to complete the virus geometry as it is shown in the figure
 
-![dynamoPickerVirus](HIVTutorial/dynamopicking.webp)
-![dynamoPickerVirusResult](HIVTutorial/dynamopickingResult.webp)
+![dynamoPickerVirus](HIVTutorial/dynamopicking.png)
+![dynamoPickerVirusResult](HIVTutorial/dynamopickingResult.png)
 
 > **Note**: Dynamo picker is an oriented picker. This means that the picked coordinates have an orientation (transformation matrix). The orientation will be the normal direction to the picked surface.
 
