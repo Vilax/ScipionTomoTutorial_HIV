@@ -480,7 +480,7 @@ To extract the pseudo subtomograms the next input data will be required:
 
 The initial model can be estimated with the protocol `reliontomo - 3D initial model`. The input will be the extracted 3D pseudo-subtomogram at bin 6 from the previous step. 
 
-- **Number of VDAM mini-batches**: 70 large dataset, 30 small dataset. This is the number of iterations to be carried out.
+- **Number of VDAM mini-batches**: 70 large dataset, 40 small dataset. This is the number of iterations to be carried out.
 - **Regularization parameter**: 4. It goes from 0 to 4. Values close to 4 put more strenght on the data.
 - **Circular Mask diameter**: 350 A. A good value is to set the protein diameter
 - **Symmetry group**: C6. In this case the protein has C6 symmetry. For initial volumes a C1 symmetry is recommended.
@@ -494,17 +494,32 @@ The result of this protocol should be similar to the one shown in the Figure. To
 
 Using the initial model, it is possible to refine it to enhance the map quality pushing the resolution. The objective of this step will be to reach Nyquist resolution, and then in a later step extract the pseudo-subtomogram at a smaler pixel size. To refine the model, the protocol `reliontomo - 3D auto-refine` can be used. The input will be the extracted **2D** pseudo-subtomogram (2D not 3D) at bin 6 and the estimated initial model. The refinement parameter will be. 
 
-- **Circular Mask diameter**: 500A. 
-- **Symmetry group**: C6. In this case the protein has C6 symmetry.
-- **Prior width on tilt angle**: 
-- **Prior width on tilt angle**: 
-- **Prior width on tilt angle**: 
+- **Pseudo-subtomograms**: The extracted 2D-pseudosubtomograms
+- **Reference volume**: The obtained initial volume
+- **Is initial 3D map on absolute greyscale?1**: Yes
+- **Resize references if needed?**: Yes
+- **Initial low-pass filter (A)**: 60A
+- **Symmetry group**: C6. In this case the protein has C6 symmetry
+- **Do CTF-correction?**: Yes
+- **Ignore CTF until first peak?**: No
+- **Circular Mask diameter**: 350A.
+- **Mask particles with zeros**: Yes
+- **Use blush regularization**: No
+- **Initial angular sampluing interval**: 7.5 deg
+- **Initial offset range (px)**: 5 px
+- **Initial offset step (px)**: 1 px
+- **Local searches from auto-sampling**: 1.8 deg
+- **Symmetry to be relaxed**: Leave empty
+- **Use finer angulat sampling faster**: No
+- **Prior width on tilt angle**: 10 deg
+
 
 ![relionAutoRefine](HIVTutorial/relionAutorefineBin4.png)
 
 
 ![reliontomoInitialModelResult](HIVTutorial/reliontomoInitialModelResult.png)
-The result of this protocol should be similar to the one shown in the Figure. Note that the FSC reach Nyquist frequency allowing to reduce the binning, and the average map is in agreement with this resolution.
+The result of this protocol should be similar to the one shown in the Figure. Fpr the latge dataset the FSC should reach Nyquist, for the small data set with 1-2 picked viruses the FSC should be close to Nyquist, around 20A resolution. If Nyquist resolution is reached, the next step will be to reduce the binning refining again the obtained map
+.
 ![relionAutorefinebin4Result](HIVTutorial/relionAutorefinebin4Result.png)
 
 
@@ -536,20 +551,6 @@ The reconstructed protein can be visualized with Scipion (to see the slices) or 
 ## Refine volume at bin 2
 
 
-
-## Remove duplicates
-
-During the picked step it can be noted that the capsids are densely picked. Thus, the set of coordinates can be redundant. To avoid this duplicates the protocol `reliontomo - apply operation` can be used. In this step, the protocol will be used to reduce the number of picked coordinates to a non-redundant set.
-
-![removeDuplicatesBin2](HIVTutorial/removeDuplicatesBin2.png)
-
-
-However, it is observed that that reconstruction is not perfectly centered in the box, presenting a slight but not neglectible displacement along the z axis. T
-
-## Refine volume at bin 2
-
-![relionAutoRefine](HIVTutorial/relionAutorefineBin2.png)
-![relionAutorefinebin4Result](HIVTutorial/relionAutorefinebin2Result.png)
 
 # Contact us
 
