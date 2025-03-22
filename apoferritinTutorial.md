@@ -25,7 +25,7 @@ This tutorial can be carried out with:
 
 ## Small dataset tutorial 
 
-It only contains a two tilt series. This workflow is ideal to be executed in a normal laptop with GPU. The data set can be downloaded using the next command line
+It only contains two tilt series. This workflow is ideal to be executed in a normal laptop with GPU. The data set can be downloaded using the next command line
 
 > scipion3 testdata --download apoferritin_tutorial
 
@@ -34,13 +34,6 @@ Alternatively, the dataset can be found in the next link [https://scipion.cnb.cs
 ## Large dataset tutorial
 
 The tilt series and the mdoc files can be downloaded from the entry [EMPIAR-10491](https://www.ebi.ac.uk/empiar/EMPIAR-10491)
-
-# Workflow of this tutorial
-
-The workflow of this tutorial can be summarized in the next figures. Use the this workflow to follow the different steps of the next sections
-
-![workflowRec](HIVTutorial/workflowRec.png)
-![workflowSTA](HIVTutorial/workflowSTA.png)
 
 
 # Import tilt series movies
@@ -78,7 +71,7 @@ The used parameters are shown in the Figure. The critical ones are:
 
 **Plugin**: [scipion-em-warp](https://github.com/scipion-em/scipion-em-warp)
 
-Once the tilt series movies were imported the acquired frames at each tilt angle will be aligned to obtain tilt series. The protocol `warp - tilt-series motion and ctf estimation` will find and correct the relative movement between the frames. This protocol also allows to estimate the CTF, it means the defocus, of ech tilt image.
+Once the tilt series movies were imported the acquired frames at each tilt angle will be aligned to obtain tilt series. The protocol `warp - tilt-series motion and ctf estimation` will find and correct the relative movement between the frames. This protocol also allows to estimate the CTF, it means the defocus of ech tilt image.
 
 ![warp - tilt-series motion and ctf estimation form](apoferritinTutorial/warpMotionCor.png)
 
@@ -101,9 +94,23 @@ The most important parameters are:
 - **Fit phase**: No
 - **Use the movie average**: No
 
-The output of the protocol will be a set of tilt series and a set of CTFs. It is possible to visualize these set with the tomoViewer and CTFtomoViewer.
+The output of the protocol will be a set of tilt series and a set of CTFs. It is possible to visualize these set with the `TomoViewer` and `CTFtomoViewer`.
 
 ![warpOutput](apoferritinTutorial/warpOutput.png)
+
+# Excluding views and CTFs
+
+## Excluding views
+
+> There is no need to exclude views for this dataset. The reader can do it if he wishes.
+
+
+## Excluding CTFs
+
+CTFs can be excluded with the `CTFTomoViewer`. The main reasons to exclude a CTF are: a bad estimation of the defocus value, or a high astigmatism. To exclude a CTF just select the corresponding CTF and press the `space`. Alternatively, it can be marked by clicking on the exclude box. The excluded CTFs will be highlighted in red. Finally, it is neccesary to generate a new set of CTF by clicking on the botton `Generate subsets`. 
+
+![excludeCTFViewer](apoferritinTutorial/excludeCTFsWarp.png)
+
 
 # X-ray eraser
 
@@ -115,7 +122,7 @@ The interaction of electrons with the sample can generate X-rays. They can be de
 
 ![FormXrayEraser](apoferritinTutorial/XrayEraser.png)
 
-The ouput of this protocol will be a set of Tilt Series that looks like almost identical to the previous ones.
+The ouput of this protocol will be a set of Tilt Series that looks almost identical to the input tilt series.
 
 # Tilt series alignment
 
@@ -125,7 +132,7 @@ There are many methods to align tilt series in the ScipionTomo framework, as the
  - Aretomo
  - EmanTomo
 
-In this tutorial IMOD will be used, however, it is absolutely possible to do this tutorial with any other of the list.
+In this tutorial `IMOD - teamtomo/batchruntomo` will be used, however, it is absolutely possible to do this tutorial with any other of the list.
 
 ## IMOD preprocessing (binning Tilt series)
 
@@ -133,7 +140,7 @@ In this tutorial IMOD will be used, however, it is absolutely possible to do thi
 
 **Plugin**: [scipion-em-imod](https://github.com/scipion-em/scipion-em-imod)
 
-Before starting with the alignment of the tilt series a binning step will be carried out in order to reduce the image size, increasing the contrast (SNR) and reducing the computational burden for alinging. The protocol `imod - preprocess tilt series` allows to perform different preprocessing operation on the tilt series, as binning or adjusting the gray values. In this case the size of the tilt series will be reduced in a factor 10.
+Before starting with the alignment of the tilt series a binning step will be carried out in order to reduce the image size, increasing the contrast (SNR) and reducing the computational burden. The protocol `imod - preprocess tilt series` allows to perform different preprocessing operations on the tilt series, as binning or adjusting the gray values. In this case the size of the tilt series will be reduced in a factor 10.
 
 - **Tilt series**: The output of the X-ray eraser
 - **Binning**: 10
@@ -142,6 +149,8 @@ Before starting with the alignment of the tilt series a binning step will be car
 - **Standard deviation**: 1.0
 
 ![imodTsPreprocess](HIVTutorial/imodTsPreprocess.png)
+
+> **Note**: The tomogram will be reconstructed at bin 10, therefore the CTF correction step will be skipped
 
 ## IMOD batch run tomo
 
@@ -152,15 +161,17 @@ Before starting with the alignment of the tilt series a binning step will be car
 
 To align the tilt series with IMOD the protocol `imod - teamtomo/batchruntomo` will be used. The protocol can be executed with default parameters:
 
-- **Tilt series**: The tilt series to be aligned the dose filtered one is recommened
+- **Tilt series**: The binnedc tilt series
 - **Alignment mode**: Patch tracking
-- **Generate interpolated tilt series**: Yes at bin 4 (just for visualization purpose)
+- **Generate interpolated tilt series**: Yes at bin 1 (just for visualization purpose)
 - **Patch side-length(A)**: 500
 - **Patch overlap percent**: 80
 
-> **Note**: The output of this protocol is a set of tilt series. In the summary, the output tilt series presents a `+ali` flag. This flag informs about the alignment, the tilt series present an associated transformation matrix (with the estimated shifts). **The +ali indicates that matrix is associated as metadata but not applied to the tilt series**. To visualize the aligned tilt series the flag of the protocol `generate interpolated tilt-series` must be enable. In the summary, the interpolated tilt series can be identified with the flag `!interp`.
+> **Note**: The output of this protocol is a set of tilt series. In the summary, the output tilt series presents a `+ali` flag. This flag informs about the alignment, the tilt series present an associated transformation matrix (with the estimated shifts). **The +ali indicates that matrix is associated as metadata but not applied to the tilt series**. To visualize the aligned tilt series the flag of the protocol `generate interpolated tilt-series` must be enable. In the summary, the interpolated tilt series can be identified with the flag `!interp`. 
 
 ![FormCbatchRun](apoferritinTutorial/batchRunTomo.png)
+
+The result are two tilt series: non-interpolated (left) and interpolated (right). Nothe how the interpolated shows borders as result of applying the alignment transformation matrix. Moreover, the orientation of the tilt series changes as result of the alignment. The tilt axis must be the Y axis.
 
 ![outputbatchRun](apoferritinTutorial/outputbatchRunTomo.png)
 
@@ -169,109 +180,17 @@ To align the tilt series with IMOD the protocol `imod - teamtomo/batchruntomo` w
 
 # Assign transformation matrix to Tilt series
 
-When the dose filter was applied to align the tilt series, the dose of the aligned tilt series was set to zero. The does filter helped for aligning tilt series. Unfortunately, some subtomogram averaging protocols requires unfiltered tilt series, it means without dose filtering. For this reason, it would be usefull to assign the alignment information to the tilt non-dose filtered tilt series. This task can be carried out with the protocol `tomo - tilt-series assign alignment`. The protocol involves two tilt series: One to take the alignment and other to set the alignment. In this tutorial the transformation matrix from the alignment will be set to the output of the x-ray eraser tilt series (see the workflow).
+The output of the alignment protocol is a binned image with the alignment parameter +ali. However, we need would like to use the unbinned tilt series with this alignment parameters. For this reason, it would be usefull to assign the alignment information to the raw tilt series. This task can be carried out with the protocol `tomo - tilt-series assign alignment`. The protocol involves two tilt series: One to take the alignment and other to set the alignment. In this tutorial the transformation matrix from the alignment will be set to the output of the x-ray eraser tilt series (see the workflow).
 
-![FormtiltseriesAssignAlignment](HIVTutorial/tiltseriesAssignAlignment.png)
+![FormtiltseriesAssignAlignment](apoferritinTutorial/tiltseriesAssignAlignment.png)
 
-Note that the output of `tomo - tilt-series assign alignment` presents a non-zero dose. This can be checked by by visualizing the tilt series with `TomoViewer`, see figure.
+The transformation matrix after the assignment can be checked with the `TomoViewer`
 
 ![resultAssignTransform](HIVTutorial/resultAssignTransform.png)
 
+# Tomogram reconstruction
 
-# CTF estimation
-
-There are many methods to estimate the CTF in ScipionTomo, as they are:
-
- - CTFfind
- - gCTF
- - AreTomo
- - IMOD CTFPlotter
- - Emantomo
-
-In this tutorial CTFfind will be used.
-
-## CTF estimation with CTFfind
-
-**Reference**: [J. Elferich et. al. 2024](https://doi.org/10.7554/eLife.97227.1)
-
-**Plugin**: [scipion-em-cistem](https://github.com/scipion-em/scipion-em-cistem)
-
-The CTF estimation is a critical step to achieve high resolution in Subtomogram Averaging, or even to visualize fine details in cellular environments. The CTF correction attempts to compensate for the loss of information that the microscope introduces as a consequence of aberrations and defocus.
-
-> **Tip**: The CTF should be estimated with the raw tilt series without any kind of preprocessing. The use of dose filters, or alignment can change the spectral properties of the tilt series, and throw inaccuracies in the CTF estimation.
-
-The CTF will be estimated with the protocol `cistem - tilt-series ctffind`. The critical parameters are:
-
-- **FFT box size**: 512 px as default value. 
-- **Resolution (A)**: Min 50A and max 5A
-- **Defocus range**: In this case from 10000 to 50000 A.
-- **Defocus Step**: 500 A
-- **Phase shift**: No
-
-> **Tip**: A narrow defocus range ensure a better defocus estimation. A good approach is to provide a range centered in the nominal defocus of the tilt series acquisition. This information is contained in the mdoc files.
-
-
-![FormCTFfind5](HIVTutorial/CTFfind5.png)
-
-The result of any CTF estimation that can be visualized by clicking on Analyze results or alternatively by right-clicking on the output, in the Summary panel (low area of the main Scipion window). The viewer will open a window with the list of SetOfCTFTomoSeries corresponding to each tilt series. In this window the defocus, astigmatism and resolution associated to each tilt image can be visualized. Also, the window presents a summary plot with the defocus and resolution per tilt image. This plot will be of special interest to validate the estimation of the CTF.
-
-![CTFviewer](HIVTutorial/CTFviewer.png)
-
-# Excluding views and CTFs
-
-**Reference**: [J. Jimenez de la Morena et.at. 2022](https://doi.org/10.1016/j.jsb.2022.107872)
-
-**Plugin**: [scipion-em-tomo](https://github.com/scipion-em/scipion-em-tomo)
-
-ScipionTomo provides viewers to exclude views in the tilt series of CTF estimations. They can be carried out with the `TomoViewer` or the `CTFViewer`.
-
-## Excluding views
-
-Views or tilt images can be excluded with the `TomoViewer`. The main reasons to exclude a tilt image are:
-- **Bad quality image**: The tilt image is dark, presents stripes or was exposed to a high dosee.
-- **Misaligned image**: The tilt image is misaligned. The tilt series sequence presents a *jump* at that tilt angle, making a non smooth transition between tilt images.
-
-To exclude a tilt images just select the corresponding image and press the `space`, alternatively it can be marked by clicking on the exclude box. The excluded images will be highlighted in red. Finally, it will be neccesary to generate a new set of tilt series by clicking on the botton `Save`. This botton opens a new window asking if the user wants to re-stack the tilt series, or if the user preffers to mark the tilt images as excluded. The differences are the next ones:
-
-- **Re-stack**: A new stack of tilt series will be created without the excluded views. From this point the later protocols will not have access to the excluded views.
-- **Marked as excluded**: The excluded views are marked but not removed from the stack. The later protocols will process these images (if it is possible, this depends on the protocol), but they will be kept marked as excluded. This allows to rescue the views.
-
-![excludeTsViewer](HIVTutorial/excludeTsViewer.png)
-
-## Excluding CTFs
-
-CTFs can be excluded with the `CTFTomoViewer`. The main reasons to exclude a CTF are: a bad estimation of the defocus value, or a high astigmatism. To exclude a CTF just select the corresponding CTF and press the `space`, alternatively it can be marked by clicking on the exclude box. The excluded CTFs will be highlighted in red. Finally, it is neccesary to generate a new set of CTF by clicking on the botton `Generate subsets`. 
-
-![excludeCTFViewer](HIVTutorial/excludeCTFViewer.png)
-
-# CTF correction
-
-**Reference**: [J.R. Kremer 1996](https://doi.org/10.1006/jsbi.1996.0013)
-
-**Plugin**: [scipion-em-imod](https://github.com/scipion-em/scipion-em-imod)
-
-> Note: Scipion has a standard CTF model, when the CTF is estimated with any CTF estimator, the output is converted and stored in the Scipion standard. To correct the CTF, Scipion converts the standard into the corresponding package (in this case imod).
-
-The CTF correction can be performed with the protocol `imod - correct CTF`. The input of this protocol are the tilt series with assigned alignment and a set of CTFs previously estimated. The tilt series will be the ones we assigned the alignment information. The used parameters for this protocol will be left as default parameters.
-
-![FormImodCTFcorr](HIVTutorial/imodCTFcorr.png)
-
-# Tilt series preprocess
-
-**Reference**: [J.R. Kremer 1996](https://doi.org/10.1006/jsbi.1996.0013)
-
-**Plugin**: [scipion-em-imod](https://github.com/scipion-em/scipion-em-imod)
-
-The CTF-corrected tilt series will be the input data for a later tomogram reconstruction. Up to this step we have worked with the full-size tilt series (binning 1). IF the tomograms are reconstructed at bin 1, they will be very heavy. To safe disc and enhance the SNR of the tomogram the tilt series will be binned. The protocol `imod - preprocess tilt series` allows to perform different preprocessing operation on the tilt series, as binning or adjusting the gray values. 
-
-> For the tutorial that uses the small dataset, use bin 6
-> For the tutorial that uses the large dataset, use bin 4
-
-![imodTsPreprocess](HIVTutorial/imodTsPreprocess.png)
-
-## Tomogram reconstruction
-
-There are many methods to reconstruct tomogram in ScipionTomo framework, as they are:
+There are many methods to reconstruct tomograms in ScipionTomo framework, as they are:
 
  - Tomo3d
  - Imod
@@ -280,45 +199,60 @@ There are many methods to reconstruct tomogram in ScipionTomo framework, as they
  - Emantomo
  - Reliontomo
 
-In this tutorial tomo3D will be used.
+This tutorial uses IMOD.
 
 
-## Tomogram reconstruction with tomo3D
+## Tomogram reconstruction with IMOD
 
-**Reference**: [J.I. Agulleiro 2011](https://doi.org/10.1093/bioinformatics/btq692)[J.I. Agulleiro 2015](https://doi.org/10.1016/j.jsb.2014.11.009)
+**Reference**: [J.R. Kremer 1996](https://doi.org/10.1006/jsbi.1996.0013)
 
-**Plugin**: [scipion-em-tomo3d](https://github.com/scipion-em/scipion-em-tomo3d)
+**Plugin**: [scipion-em-imod](https://github.com/scipion-em/scipion-em-imod)
 
-To reconstruct the tomogram from the tilt series the protocol `tomo3d - reconstruct tomogram`. Tomo3D provides two different reconstruction algorithm: Weighted Back Projection (WBP) and Simultaneous Iterative reconstruction technique (SIRT). The method of SIRT will be used.
+To reconstruct the tomogram from the tilt series the protocol `imod - reconstruct tomogram` will be used. IMOD provides two different reconstruction algorithm: Weighted Back Projection (WBP) and SIRT-like filtered tomograms.
 
-> **Tip**: WBP is faster than the SIRT method, but SIRT provides higher contrast. To visualize cellular enviroments SIRT is recommended, or to pick subtomogram with a template matching approach. If classical subtomogram averaging is going to be carried out, WBP is recommended.
+> **Tip**: WBP is faster than the SIRT-like method, but SIRT provides higher contrast. To visualize cellular enviroments SIRT is recommended, or to pick subtomograms with a template matching approach.
 
-The input of the reconstruction will be the binned CTF corrected tilt series. A SIRT recontruction is recommended in this case to produced tomograms with high contrast. The `Tomogram Thickness` was set to 300 voxels.
+The input of the reconstruction will be the binned tilt series. The `Tomogram Thickness` was set to 128 voxels.
 
-![tomo3d](HIVTutorial/tomo3d.png)
+The protocol can be executed with default parameters:
+
+- **Tilt series**: The binned tilt series
+- **Tomogram Thickness**: 128
+- **Tomogram width (voxels)**: 0
+- **Tomogram Shift**: In X 0.0   in Z 0.0
+- **Offset (deg) of the**: Tilt angles 0.0  Tilt axis 0.0
+- **Super-sampling factor**: 2
+- **Iterations of a SIRT-like equivalent filter**: 0
+- **Cutoff linear region**: 0.35
+- **Radial fall-off**: 0.035
+
+![IMODSIRTtomo](apoferritinTutorial/imodTomogramRec.png)
 
 The output can be visualized by clicking on Analyze results or alternatively by choosing the visualization tool by right-clicking on the output in the Summary box.
 
-![tomo3dSIRTtomo](HIVTutorial/tomo3DSIRT.png)
+![IMODSIRTtomo](apoferritinTutorial/resultTomoRecImod.png)
 
 
-# Directional picking with dynamo
+# Picking
 
-**Reference**: [D. Castaño-Diez et.al 2012](https://doi.org/10.1016/j.jsb.2011.12.017)
+This dataset can be picked with any of the next software packages
 
-**Plugin**: [scipion-em-dynamo](https://github.com/scipion-em/scipion-em-dynamo)
+* Sphire - cryolo
+* Emantomo - template matching
+* Gapstop  - template matching
+* Deepfinder
 
-This picker is quite flexible and it is designed to pick broad variety of geometries: vesicles, spheres, or filaments among other. The input of this protocol only requires the set of tomograms to be picked. It is composed by two steps:
-- **dynamo - vectorial picking**: This step aims to pick a set of points that define a mesh. The mesh would represent a first approach to the geometry to be picked.
-- **dynamo - model workflow**: The previous meshed will be fitted to the selected geometrical model. Then, random points will be selected on the mesh as coordinates of the particles.
-  
-This section shows how to pick with dynamo, however, to avoid the manual task of picking a set of coordinates is also provided in a file. These coordinates can be imported in ScipionTomo.
 
-## Dynamo vectorial picking
+## Picking with cryolo
 
-The reconstructed present several several HIV virus. In our case we are interested in the reconstruction of structure of the immature capsid lattice. To do that, tt is neccesary to identify the capsid in the tomograms. The protocol `dynamo - vectorial picking` will be used. The parameter boxsize only has a visualization purpose (size of the plotted points on the tomogram), it does not affect to the picked coordinates. 
+**Reference**: [T. Wagner et.al 2019](https://doi.org/10.1038/s42003-019-0437-z)
 
-![dynamoPicking](HIVTutorial/dynamoPicking.png)
+**Plugin**: [scipion-em-dynamo](https://github.com/scipion-em/scipion-em-sphire)
+
+
+It is neccesary to identify the proteins in the tomograms. The protocol `sphire - cryolo picking` will be used. The parameter boxsize only has a visualization purpose (size of the plotted points on the tomogram), it does not affect to the picked coordinates. 
+
+![dynamoPicking](apoferritinTutorial/cryoloPicking.png)
 
 > **Note**: For the small set tutorial only one or two viruses will be picked. For the large dataset tutorial, all viruses will be picked. To avoid manual picking the coordinates can be imported later in te tutorial.
 
@@ -331,34 +265,6 @@ It is not neccesary to pick the complete surface of the virus, dynamo just requi
 ![dynamoPickerVirus](HIVTutorial/dynamopicking.png)
 ![dynamoPickerVirusResult](HIVTutorial/dynamopickingResult.png)
 
-> **Note**: Dynamo picker is an oriented picker. This means that the picked coordinates have an orientation (transformation matrix). The orientation will be the normal direction to the picked surface.
-
-> **Warning**: The output of this protocol is a set of meshes, not coordinates. The meshes will be used by the next protocol to fit the geometry (ellipsoid) and and pick on it.
-
-
-## Dynamo model workflow
-
-The protocol `dynamo - model workflows` uses the picked set of meshed as result of the protocol `dynamo - vectorial picking` and provides a 
-
-![dynamoModelWorkflow](HIVTutorial/dynamoModelWorkflow.png)
-
-![coordinatesHIV](HIVTutorial/coordinatesHIV.png)
-
-
-## Importing coordinates
-
-To avoid the manual picking, a sqlite file with all picked coordinates for this data set is provided. This file can be found in the downloaded dataset. The file contains the result of the protocol `dynamo - model workflow`. The import aims to sumimulate the result of the model workflow. Thus, the manual picking with dynamo is avoided simplifying the tutorial. To import the coordinates in Scipion, the protocol `tomo - import 3D coordinates from Scipion` can be used. The protocol requires:
-
-- **Scipion sqlite file**:
-- **Tomograms**: Set the tomogram that will be associated to the coordinates. The reconstructed tomograms with tomo3D or imod reconstruction.
-- **Box size (px)**: 54 px. This only has visualization purpose. It represents the size of the plotted boxed of the picked coordinates on the tomogram.
-  
-> **Note**: ScipionTomo has other protocol to import coordinates that do not requires sqlite files, it is called `tomo - import coordinates`.
-
-![importCoordinates](HIVTutorial/importCoordinates.png)
-
-If the imported coordinates are opened with dynamo viewer, the next result should be visualized. This result is identical to the obtained one with the protocol `dynamo - model workflow`.
-![coordinatesHIV](HIVTutorial/coordinatesHIV.png)
 
 # Subtomogram Averaging with RelionTomo
 
@@ -366,23 +272,23 @@ If the imported coordinates are opened with dynamo viewer, the next result shoul
 
 **Plugin**: [scipion-em-reliontomo](https://github.com/scipion-em/scipion-em-reliontomo)
 
-## Extract pseudo-subtomograms at bin 6
+## Extract pseudo-subtomograms at bin 10
 
 Pseudo-subtomograms are 2D cropped images or 3D-reconstructed subtomograms, premultiplied by the CTF. They do not represent physical objects. The premultiplication by the CTF, allows to avoid aliasing and speed up the computational times. The protocol `reliontomo - extract subtomos` can be used to extract the pseudo-subtomograms. This protocol allows to extract them as 2D or 3D. In this tutorial both kinds of psuedo subtomogram will be extracted. The 3D pseudo-subtomogram will be used for generating an initial volume, and the 2D pseudo-sutomograms will be used in the refinement step.
 
 To extract the pseudo subtomograms the next input data will be required:
 
 - **Tilt series**: They must contain the alignment information.
-- **CTF estimation**: From the CTFfind estimation with the excluded views
-- **Coordinates**: They are the picked coordinates. The imported coordinates will be used
-- **Binning factor**: 6 This is the scaling factor in relation to the input tilt series
-- **Box size (px)**: 128. This box size will be used to correct the CTF in the cropped particles from the tilt series
-- **Croppped box size (px)**: 64. This will be the size of the pseudo-subtomograms and therefore of the reconstructed map.
+- **CTF estimation**: From the Warp estimation with the excluded views
+- **Coordinates**: They are the picked coordinates.
+- **Binning factor**: 10 This is the scaling factor in relation to the input tilt series
+- **Box size (px)**: 64. This box size will be used to correct the CTF in the cropped particles from the tilt series
+- **Croppped box size (px)**: 24. This will be the size of the pseudo-subtomograms and therefore of the reconstructed map.
 - **Write output as 2D stacks**: Set Yes for 2D pseudo-subtomograms and No for 3D pseudo-subtomograms.
 
-> **Note** This protocol will be executed twice using the same parameters, but first writing output as 3D and later as 2D pseudo-subtomogram. 
+> **Warning** This protocol will be executed twice using the same parameters, but first writing output as 3D and later as 2D pseudo-subtomogram. 
 
-![relionTomoExtract](HIVTutorial/relionTomoExtract.png)
+![relionTomoExtract](apoferritinTutorial/relionExtractbin10.png)
 
 > **Tip**: The 3D pseudo-subtomograms work better for obtaining a 3D initial model than the 2D pseudo-subtomograms.
 
@@ -391,15 +297,15 @@ To extract the pseudo subtomograms the next input data will be required:
 
 The initial model can be estimated with the protocol `reliontomo - 3D initial model`. The input will be the extracted 3D pseudo-subtomogram at bin 6 from the previous step. 
 
-- **Number of VDAM mini-batches**: 70 large dataset, 40 small dataset. This is the number of iterations to be carried out.
+- **Number of VDAM mini-batches**: 30 large dataset, 40 small dataset. This is the number of iterations to be carried out.
 - **Regularization parameter**: 4. It goes from 0 to 4. Values close to 4 put more strenght on the data.
-- **Circular Mask diameter**: 350 A. A good value is to set the protein diameter
-- **Symmetry group**: C6. In this case the protein has C6 symmetry. For initial volumes a C1 symmetry is recommended.
-- **Prior width on tilt angle**: 10. degrees. It defines the prior on the tilt to be estimated
-![relionInitialModel](HIVTutorial/relionInitialModel.png)
+- **Circular Mask diameter**: 150 A. A good value is to set the protein diameter
+- **Symmetry group**: O. In this case the protein has C6 symmetry. For initial volumes a C1 symmetry is a good practice, however in this tutorial the symmetry was imposed to speed up the results.
+- **Prior width on tilt angle**: 15. degrees. It defines the prior on the tilt to be estimated
+![relionInitialModel](apoferritinTutorial/relionInitialModel.png)
 
 The result of this protocol should be similar to the one shown in the Figure. To visualize it, the average map can be opened with Scipion or Chimera.
-![reliontomoInitialModelResult](HIVTutorial/reliontomoInitialModelResult.png)
+![reliontomoInitialModelResult](apoferritinTutorial/apoferritinInitialModelpng.png)
 
 ## 3D Auto-refine
 
@@ -425,16 +331,16 @@ Using the initial model, it is possible to refine it to enhance the map quality 
 - **Prior width on tilt angle**: 10 deg
 
 
-![relionAutoRefine](HIVTutorial/relionAutorefineBin4.png)
+![relionAutoRefine](apoferritinTutorial/autorefineBin10.png)
 
 
-![reliontomoInitialModelResult](HIVTutorial/reliontomoInitialModelResult.png)
+![reliontomoInitialModelResult](apoferritinTutorial/reliontomoInitialModelResult.png)
 The result of this protocol should be similar to the one shown in the Figure. Fpr the latge dataset the FSC should reach Nyquist, for the small data set with 1-2 picked viruses the FSC should be close to Nyquist, around 20A resolution. If Nyquist resolution is reached, the next step will be to reduce the binning refining again the obtained map
 .
-![relionAutorefinebin6Result](HIVTutorial/relionAutorefinebin6Result.png)
+![relionAutorefinebin6Result](apoferritinTutorial/relionAutorefinebin6Result.png)
 
 
-## Extract pseudo-subtomograms at bin 2
+## Extract pseudo-subtomograms at bin 4
 
 This steps shows how to reduce the binning keeping the alignment of already refined pseudo-subtomograms. The protocol `reliontomo - extract subtomos` allows this task. The parameters :
 
@@ -445,21 +351,21 @@ This steps shows how to reduce the binning keeping the alignment of already refi
 - **Box size (px)**: 256 px. This box size will be used to correct the CTF in the cropped particles from the tilt series
 - **Croppped box size (px)**: 128 px. This will be the size of the pseudo-subtomograms and therefore of the reconstructed map.
 - **Write output as 2D stacks**: Set Yes for refinin 2D pseudo-subtomograms are recommended
-![extractbin2](HIVTutorial/extractbin2.png)
+![extractbin2](apoferritinTutorial/extractbin4.png)
 
 
-## Reconstruct particle at bin 2
+## Reconstruct particle at bin 4
 
 In this step the refined pseudo-subtomograms from the previous autorefine are used to reconstruct the protein, but keeping their angular assignment. This is only a reconstruction step. The protocol `reliontomo - reconstruct particle` 
 
-![relionReconstructParticlebin2](HIVTutorial/relionReconstructParticlebin2.png)
+![relionReconstructParticlebin2](apoferritinTutorial/RelionReconstructBin4.png)
 
 The reconstructed protein can be visualized with Scipion (to see the slices) or with Chimera (to see the 3D map). As it can be observed in the figure the map quality enhanced in comparison to the reconstruction at bin 6. 
 
 ![reconstructParticlebin2Result](HIVTutorial/reconstructParticlebin2Result.png)
 
 
-## Refine volume at bin 2
+## Refine volume at bin 4
 
 
 
