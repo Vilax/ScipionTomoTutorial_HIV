@@ -27,7 +27,7 @@ This tutorial can be carried out with:
 
 It only contains two tilt series. This workflow is ideal to be executed in a normal laptop with GPU. The data set can be downloaded using the next command line
 
-> scipion3 testdata --download apoferritin_tutorial
+> scipion3 testdata --download tomo_apoferritin_tutorial
 
 Alternatively, the dataset can be found in the next link [https://scipion.cnb.csic.es/downloads/scipion/data/tests/apoferritin_tutorial/](https://scipion.cnb.csic.es/downloads/scipion/data/tests/apoferritin_tutorial/)
 
