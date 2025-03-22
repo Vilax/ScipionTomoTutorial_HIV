@@ -247,18 +247,21 @@ This dataset can be picked with any of the next software packages
 
 **Reference**: [T. Wagner et.al 2019](https://doi.org/10.1038/s42003-019-0437-z)
 
-**Plugin**: [scipion-em-dynamo](https://github.com/scipion-em/scipion-em-sphire)
+**Plugin**: [scipion-em-sphire](https://github.com/scipion-em/scipion-em-sphire)
 
 
-It is neccesary to identify the proteins in the tomograms. The protocol `sphire - cryolo picking` will be used. The parameter boxsize only has a visualization purpose (size of the plotted points on the tomogram), it does not affect to the picked coordinates. 
+It is neccesary to identify the proteins in the tomograms. The protocol `sphire - cryolo picking` will be used. for these tomograms the next parameters will be used:
 
-![dynamoPicking](apoferritinTutorial/cryoloPicking.png)
+- **Input tomograms**: The reconstructed ones
+- **Picking Model**: General cryo (low pass filtered)
+- **Confidence threshold**: 0.3No
+- **Low pass filter**: No
+- **Number of CPU**: 4
+- **Boxsize**: 32
 
-> **Note**: For the small set tutorial only one or two viruses will be picked. For the large dataset tutorial, all viruses will be picked. To avoid manual picking the coordinates can be imported later in te tutorial.
+![cryoloPicking](apoferritinTutorial/cryoloPicking.png)
 
-When the protocol is executed, a new window with the list of tomograms to be picked will appear. By double clicking on a tomogram the dynamo picking interface will be opened. Dynamo hsa different kinds of geometrical pickers. Due to the geometry of the HIV virus an ellipsoidal vesicle model will be used to fit the geometry of the HIV. By means of this model, the virus capsid will be manually picked, as it is shown in the figure. Then, it will be neccesary to select on the capsid contour placing the mouse pointer on the capsid and using the key `c` to fix a marker. Once the capsid of a virus has been picked, a new model (ellipsoidal vesicle) will be created and the process repeated until end with the picking of all viruses presented the tomogram. Then, the dynamo interface can be closed and the list window with the list of tomogram will be updated with the number of picked coordinates in the already picked tomogram.
-
-![dynamoPickerInterface](HIVTutorial/dynamoPickerInterface.png)
+> **Tip**: Cryolo has been trained with a sampling rate of 10A/px. It is a good practice to downsample or bin the tomogram to achieve a pixe size close to that target. 
 
 It is not neccesary to pick the complete surface of the virus, dynamo just requires some points to complete the virus geometry as it is shown in the figure
 
