@@ -303,7 +303,7 @@ The initial model can be estimated with the protocol `reliontomo - 3D initial mo
 ![relionInitialModel](apoferritinTutorial/relionInitialModel.png)
 
 The result of this protocol should be similar to the one shown in the Figure. To visualize it, the average map can be opened with Scipion or Chimera.
-![reliontomoInitialModelResult](apoferritinTutorial/apoferritinInitialModelpng.png)
+![reliontomoInitialModelResult](apoferritinTutorial/apoferritinInitialModel.png)
 
 ## 3D Auto-refine
 
@@ -332,7 +332,7 @@ Using the initial model, it is possible to refine it to enhance the map quality 
 ![relionAutoRefine](apoferritinTutorial/autorefineBin10.png)
 
 
-![reliontomoInitialModelResult](apoferritinTutorial/reliontomoInitialModelResult.png)
+![reliontomoInitialModelResult](apoferritinTutorial/relionInitialVolume.png)
 The result of this protocol should be similar to the one shown in the Figure. Fpr the latge dataset the FSC should reach Nyquist, for the small data set with 1-2 picked viruses the FSC should be close to Nyquist, around 20A resolution. If Nyquist resolution is reached, the next step will be to reduce the binning refining again the obtained map
 .
 ![relionAutorefinebin6Result](apoferritinTutorial/relionAutorefinebin6Result.png)
@@ -360,7 +360,7 @@ In this step the refined pseudo-subtomograms from the previous autorefine are us
 
 The reconstructed protein can be visualized with Scipion (to see the slices) or with Chimera (to see the 3D map). As it can be observed in the figure the map quality enhanced in comparison to the reconstruction at bin 6. 
 
-![reconstructParticlebin2Result](HIVTutorial/reconstructParticlebin2Result.png)
+![reconstructParticlebin2Result](apoferritinTutorial/reconstructionRelionTomo.png)
 
 
 ## Refine volume at bin 4
