@@ -263,11 +263,6 @@ It is neccesary to identify the proteins in the tomograms. The protocol `sphire 
 
 > **Tip**: Cryolo has been trained with a sampling rate of 10A/px. It is a good practice to downsample or bin the tomogram to achieve a pixe size close to that target. 
 
-It is not neccesary to pick the complete surface of the virus, dynamo just requires some points to complete the virus geometry as it is shown in the figure
-
-![dynamoPickerVirus](HIVTutorial/dynamopicking.png)
-![dynamoPickerVirusResult](HIVTutorial/dynamopickingResult.png)
-
 
 # Subtomogram Averaging with RelionTomo
 
