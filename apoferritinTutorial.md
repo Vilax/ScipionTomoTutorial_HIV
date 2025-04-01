@@ -148,7 +148,7 @@ Before starting with the alignment of the tilt series a binning step will be car
 - **Mean**: 0.0
 - **Standard deviation**: 1.0
 
-![imodTsPreprocess](HIVTutorial/imodTsPreprocess.png)
+![imodTsPreprocess](apoferritinTutorial/imodTsPreprocess.png)
 
 > **Note**: The tomogram will be reconstructed at bin 10, therefore the CTF correction step will be skipped
 
