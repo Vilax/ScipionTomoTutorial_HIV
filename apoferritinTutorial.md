@@ -186,7 +186,7 @@ The output of the alignment protocol is a binned image with the alignment parame
 
 The transformation matrix after the assignment can be checked with the `TomoViewer`
 
-![resultAssignTransform](HIVTutorial/resultAssignTransform.png)
+![resultAssignTransform](apoferritinTutorial/asignAlignmentResult.png)
 
 # Tomogram reconstruction
 
