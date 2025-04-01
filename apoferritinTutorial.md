@@ -293,31 +293,31 @@ To extract the pseudo subtomograms the next input data will be required:
 
 ## Initial model
 
-The initial model can be estimated with the protocol `reliontomo - 3D initial model`. The input will be the extracted 3D pseudo-subtomogram at bin 6 from the previous step. 
+The initial model can be estimated with the protocol `reliontomo - 3D initial model`. The input will be the extracted 3D pseudo-subtomogram at bin 10 from the previous step. 
 
 - **Number of VDAM mini-batches**: 30 large dataset, 40 small dataset. This is the number of iterations to be carried out.
-- **Regularization parameter**: 4. It goes from 0 to 4. Values close to 4 put more strenght on the data.
+- **Regularization parameter**: 4.0 It goes from 0 to 4. Values close to 4 put more strenght on the data.
 - **Circular Mask diameter**: 150 A. A good value is to set the protein diameter
 - **Symmetry group**: O. In this case the protein has O symmetry. For initial volumes a C1 symmetry is a good practice, however in this tutorial the symmetry was imposed to speed up the results.
-- **Prior width on tilt angle**: 15. degrees. It defines the prior on the tilt to be estimated
+- **Prior width on tilt angle**: 15.0 degrees. It defines the prior on the tilt to be estimated
 ![relionInitialModel](apoferritinTutorial/relionInitialModel.png)
 
 The result of this protocol should be similar to the one shown in the Figure. To visualize it, the average map can be opened with Scipion or Chimera.
-![reliontomoInitialModelResult](apoferritinTutorial/apoferritinInitialModel.png)
+![reliontomoInitialModelResult](apoferritinTutorial/relionInitialVolume.png)
 
 ## 3D Auto-refine
 
-Using the initial model, it is possible to refine it to enhance the map quality pushing the resolution. The objective of this step will be to reach Nyquist resolution, and then in a later step extract the pseudo-subtomogram at a smaler pixel size. To refine the model, the protocol `reliontomo - 3D auto-refine` can be used. The input will be the extracted **2D** pseudo-subtomogram (2D not 3D) at bin 6 and the estimated initial model. The refinement parameter will be. 
+Using the initial model, it is possible to refine it to enhance the map quality pushing the resolution. Despite at binnin 10 the initial volume presents enought quality, we will enhance a litle bit more the map reaching Nyquist resolution, and then in a later step extract the pseudo-subtomogram at a smaler pixel size. To refine the model, the protocol `reliontomo - 3D auto-refine` can be used. The input will be the extracted **2D** pseudo-subtomogram (2D not 3D) at bin 6 and the estimated initial model. The refinement parameter will be. 
 
-- **Pseudo-subtomograms**: The extracted 2D-pseudosubtomograms
+- **Pseudo-subtomograms**: The extracted 3D-pseudosubtomograms. Despite for refining the 2D-psedosubtomograms are recommended, at this so low resolution the 3D will be used.
 - **Reference volume**: The obtained initial volume
 - **Is initial 3D map on absolute greyscale?1**: Yes
 - **Resize references if needed?**: Yes
-- **Initial low-pass filter (A)**: 60A
-- **Symmetry group**: C6. In this case the protein has C6 symmetry
+- **Initial low-pass filter (A)**: 30A
+- **Symmetry group**: O. In this case the protein has O symmetry
 - **Do CTF-correction?**: Yes
 - **Ignore CTF until first peak?**: No
-- **Circular Mask diameter**: 350A.
+- **Circular Mask diameter**: 150A.
 - **Mask particles with zeros**: Yes
 - **Use blush regularization**: No
 - **Initial angular sampluing interval**: 7.5 deg
@@ -329,26 +329,23 @@ Using the initial model, it is possible to refine it to enhance the map quality 
 - **Prior width on tilt angle**: 10 deg
 
 
-![relionAutoRefine](apoferritinTutorial/autorefineBin10.png)
-
-
-![reliontomoInitialModelResult](apoferritinTutorial/relionInitialVolume.png)
-The result of this protocol should be similar to the one shown in the Figure. Fpr the latge dataset the FSC should reach Nyquist, for the small data set with 1-2 picked viruses the FSC should be close to Nyquist, around 20A resolution. If Nyquist resolution is reached, the next step will be to reduce the binning refining again the obtained map
+The result of this protocol should be similar to the one shown in the Figure.
 .
-![relionAutorefinebin6Result](apoferritinTutorial/relionAutorefinebin6Result.png)
-
+![relionAutorefinebin6Result](apoferritinTutorial/relionAutorefinebin10Result.png)
 
 ## Extract pseudo-subtomograms at bin 4
 
-This steps shows how to reduce the binning keeping the alignment of already refined pseudo-subtomograms. The protocol `reliontomo - extract subtomos` allows this task. The parameters :
+This steps shows how to reduce the binning keeping the alignment of already refined pseudo-subtomograms. The protocol `reliontomo - extract subtomos` allows this task. The parameters:
 
 - **Coordinates**: They will be the refined pseudo-subtomograms from the 'reliontomo - 3d auto-refine`.
-- **CTF**: The estimated with CTFfind with excluded views.
+- **CTF**: The estimated with Warp with excluded views.
 - **Tilt series**: The aligned ones with dose and excluded views.
-- **Binning**: 2.
-- **Box size (px)**: 256 px. This box size will be used to correct the CTF in the cropped particles from the tilt series
-- **Croppped box size (px)**: 128 px. This will be the size of the pseudo-subtomograms and therefore of the reconstructed map.
+- **Binning**: 4.0.
+- **Box size (px)**: 128 px. This box size will be used to correct the CTF in the cropped particles from the tilt series
+- **Croppped box size (px)**: 64 px. This will be the size of the pseudo-subtomograms and therefore of the reconstructed map.
+- **Maximum dose**: 50 e/A^2.
 - **Write output as 2D stacks**: Set Yes for refinin 2D pseudo-subtomograms are recommended
+
 ![extractbin2](apoferritinTutorial/extractbin4.png)
 
 
@@ -356,17 +353,46 @@ This steps shows how to reduce the binning keeping the alignment of already refi
 
 In this step the refined pseudo-subtomograms from the previous autorefine are used to reconstruct the protein, but keeping their angular assignment. This is only a reconstruction step. The protocol `reliontomo - reconstruct particle` 
 
-![relionReconstructParticlebin2](apoferritinTutorial/RelionReconstructBin4.png)
+![relionReconstructParticlebin2](apoferritinTutorial/relionReconstructionBin4.png)
 
-The reconstructed protein can be visualized with Scipion (to see the slices) or with Chimera (to see the 3D map). As it can be observed in the figure the map quality enhanced in comparison to the reconstruction at bin 6. 
+- **Coordinates/Pseudo-subtomograms**: They will be the refined pseudo-subtomograms from the 'reliontomo - 3d auto-refine`.
+- **Binning**: 4.0.
+- **Box size (px)**: 128 px. This box size will be used to correct the CTF in the cropped particles from the tilt series
+- **Croppped box size (px)**: 64 px. This will be the size of the pseudo-subtomograms and therefore of the reconstructed map.
+- **Symmetry group**: O.
+- **Apply Wiener filter with SNR**: 0.0
+
+The reconstructed protein can be visualized with Scipion (to see the slices) or with Chimera (to see the 3D map). As it can be observed in the figure the map quality enhanced in comparison to the reconstruction at bin 10. 
 
 ![reconstructParticlebin2Result](apoferritinTutorial/reconstructionRelionTomo.png)
 
 
 ## Refine volume at bin 4
 
+Now the obtained reconstruction will be refined with the aim of pushing the resolution of the reconstructed map.  The protocol `reliontomo - extract subtomos` will be used with the next parameters
+
+- **Pseudo-subtomograms**: The 2D extracted ones at bin 4
+- **Reference Volume**: The reconstructed volume at bin 4 from the previous step
+- **Reference Mask**: Leave empty, we lack of resolution for it
+- **Is initial 3D map on absolute greyscale?1**: Yes
+- **Resize references if needed?**: Yes
+- **Initial low-pass filter (A)**: 15A
+- **Symmetry group**: O. In this case the protein has O symmetry
+- **Do CTF-correction?**: Yes
+- **Ignore CTF until first peak?**: No
+- **Circular Mask diameter**: 150A.
+- **Mask particles with zeros**: Yes
+- **Use blush regularization**: No
+- **Initial angular sampluing interval**: 7.5 deg
+- **Initial offset range (px)**: 5 px
+- **Initial offset step (px)**: 1 px
+- **Local searches from auto-sampling**: 1.8 deg
+- **Symmetry to be relaxed**: Leave empty
+- **Use finer angulat sampling faster**: No
+- **Prior width on tilt angle**: -1 Meaning no prior
 
 
+  
 # Contact us
 
 We want to hear from you! Any comment, question, or complaints regarding this tutorial, the use of Scipion or xmipp can be sent to these emails: scipion@cnb.csic.es, xmipp@cnb.csic.es. 
@@ -375,11 +401,8 @@ Also you can follow us on our social media
 
 Twitter: https://twitter.com/instructi2pc
 
-Tutorials about Scipion use, and cryoEM seminars can be found on your YouTube channel
 
-Youtube: https://www.youtube.com/user/BiocompWebs
-
-We also have a slack channel where our most active members keep in touch daily. You can request access on scipion@cnb.csic.es
+We also have a discord server where a cryoEM/ET community is active and in touch daily. You can request access on [https://discord.gg/pCGye4Pr](https://discord.gg/pCGye4Pr)
 
 
 # References
