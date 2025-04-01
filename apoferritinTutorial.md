@@ -298,7 +298,7 @@ The initial model can be estimated with the protocol `reliontomo - 3D initial mo
 - **Number of VDAM mini-batches**: 30 large dataset, 40 small dataset. This is the number of iterations to be carried out.
 - **Regularization parameter**: 4. It goes from 0 to 4. Values close to 4 put more strenght on the data.
 - **Circular Mask diameter**: 150 A. A good value is to set the protein diameter
-- **Symmetry group**: O. In this case the protein has C6 symmetry. For initial volumes a C1 symmetry is a good practice, however in this tutorial the symmetry was imposed to speed up the results.
+- **Symmetry group**: O. In this case the protein has O symmetry. For initial volumes a C1 symmetry is a good practice, however in this tutorial the symmetry was imposed to speed up the results.
 - **Prior width on tilt angle**: 15. degrees. It defines the prior on the tilt to be estimated
 ![relionInitialModel](apoferritinTutorial/relionInitialModel.png)
 
