@@ -24,7 +24,7 @@ It only contains two tilt series. This workflow is ideal to be executed in a nor
 
 > scipion3 testdata --download chlamy_data_tutorial
 
-Alternatively, the dataset can be found in the next link [https://scipion.cnb.csic.es/downloads/scipion/data/tests/apoferritin_tutorial/](https://scipion.cnb.csic.es/downloads/scipion/data/tests/apoferritin_tutorial/)
+Alternatively, the dataset can be found in the next link [https://scipion.cnb.csic.es/downloads/scipion/data/tests/chlamy_data_tutorial/](https://scipion.cnb.csic.es/downloads/scipion/data/tests/chlamy_data_tutorial/)
 
 
 # Import tilt series movies
