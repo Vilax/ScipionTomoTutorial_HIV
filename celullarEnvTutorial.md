@@ -95,7 +95,7 @@ The output of the protocol will be a set of tilt series and a set of CTFs. It is
 
 Some views can be excluded with the `TomoViewer`. The main reasons to exclude a tilt image are: Blck image, close to the carbon border, presence of contamination, or drift. To exclude a view just select the corresponding tilt image and press the `space`. Alternatively, it can be marked by clicking on the exclude box. The excluded views will be highlighted in red. Finally, it is neccesary to generate a new set of Tilt Series by clicking on the botton `Generate subsets`. 
 
-For this dataset the low and high tilts will be removed.
+For this dataset the low and high tilts will be removed. The first 7 negative tilts and the last 4 (positive tilts).
 
 
 
