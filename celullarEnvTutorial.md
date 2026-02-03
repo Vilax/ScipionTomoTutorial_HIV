@@ -367,7 +367,9 @@ The initial model can be estimated with the protocol `reliontomo - 3D initial mo
 - **Circular Mask diameter**: 350 A. A good value is to set the protein diameter
 - **Symmetry group**: C1. In this case the protein has no symmetry. For initial volumes a C1 symmetry is a good practice.
 - **Prior width on tilt angle**: -1. It defines the prior on the tilt to be estimated. -1 means no priors
-![relionInitialModel](celullarEnvironment/relionInitialModel.png)
+![relionInitialModelForm](celullarEnvironment/cellEnv_initialModelForm.png)
+
+![relionInitialModelResult](celullarEnvironment/cellEnv_initialModel_result.png)
 
 
 
