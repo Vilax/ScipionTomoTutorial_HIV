@@ -234,6 +234,22 @@ Cryocare workflow is split in two steps: training and prediction.
 
 ## cryoCARE training
 
+cyocARE uses a Noise2Noise model to perform the denoising. To do that, 
+
+- **Are odd-even associated to the tomograms**: Yes
+- **Tomograms**: The reconstructed ones with imod
+- **Side lenght for training volumes**: 32
+- **Number of training pairs to extract per tomogram?**: 700
+- **Training epochs**: 70
+- **Steps per epoch**: 50
+- **Batch size**: 64
+- **Convolution kernel size**: 3
+- **U-net depth**: 3
+
+The output of this protocol is a new object, a cryoCARE model, that can only be used by cryoCARE. This model contains the weights of the neural network to perform the denoising in the predicition step.
+
+> Warning: The cryoCARE model is an object that cannot be visualized.
+
 ![cryocaretraingForm](celullarEnvironment/cellEnv_cryoCAREtrainForm.png)
 
 ## cryoCARE prediction
