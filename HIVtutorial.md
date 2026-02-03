@@ -116,6 +116,7 @@ The most important parameters are:
 - **Binning factor:** 2. Because this movies were acquired in superresolution mode
 - **Split & sum odd/even frames:** No
 
+The other tabs of the protocol (motioncor params, gain and defects, EER, Mag corr) can be executed with the default parameters.
 
 # X-ray eraser
 
