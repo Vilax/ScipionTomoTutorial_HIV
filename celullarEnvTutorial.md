@@ -222,6 +222,24 @@ The output can be visualized by clicking on Analyze results or alternatively by 
 
 ![IMODSIRTtomoResult](celullarEnvironment/cellEnv_imodRec_result.png)
 
+# Denoising
+
+The tomograms can be denoised with
+
+* tomo3d - denoise tomograms
+* cryocare
+
+For this tutorial `cryocare` will be used. 
+
+
+## cryoCARE training
+
+![cryocaretraingForm](celullarEnvironment/cellEnv_cryoCAREtrainForm.png)
+
+## cryoCARE prediction
+
+![cryocarepredictionForm](celullarEnvironment/cellEnv_cryoCAREpredictionForm.png)
+
 # Picking
 
 This dataset can be picked with any of the next software packages
