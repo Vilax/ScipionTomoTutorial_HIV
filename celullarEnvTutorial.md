@@ -418,7 +418,7 @@ This steps shows how to reduce the binning keeping the alignment of already refi
 
 In this step the refined pseudo-subtomograms from the previous autorefine are used to reconstruct the protein, but keeping their angular assignment. This is only a reconstruction step. The protocol `reliontomo - reconstruct particle` 
 
-![relionReconstructParticlebin2](celullarEnvironment/relionReconstructionBin4.png)
+![relionReconstructParticlebin2](celullarEnvironment/cellEnv_relionReconsBin4_form.png)
 
 - **Coordinates/Pseudo-subtomograms**: They will be the refined pseudo-subtomograms from the 'reliontomo - 3d auto-refine`.
 - **Binning**: 4.0.
