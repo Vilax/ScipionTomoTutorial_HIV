@@ -75,13 +75,13 @@ The most important parameters are:
 - **Do even and odd:** Yes
 - **Transpose gain reference:** No swap
 - **Flip gain reference:** No flip
-- **EER fraction:** 16 (No matter for this dataset)
+- **EER fraction:** 8
 - **EER group exposure:** Leave empty (No matter for this dataset)
 - **Estimate CTF:** Yes. 
 - **Windows:** 512
 - **Resolution: (A)** Min 30, Max 8.0
 - **Defocus search range (um):** Min 0.5, Max 8.0
-- **Defocus model grid**: X=2, Y=2, Temporal = 8
+- **Defocus model grid**: X=1, Y=1, Temporal = 8
 - **Fit phase**: No
 - **Use the movie average**: No
 
