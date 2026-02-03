@@ -225,7 +225,7 @@ We will use as input the Tilt Series from coarse prealignment with the next para
 
 > **Tip**: In samples with gold beads (fiducials), it is important to properly set the fiducial radius (in nanometers) since, if the indicated size is significantly different from the real one, the algorithm will fail in the fiducial location and posterior tracking. Also, it is possible to set the algorithm to differentiate between those gold beads that are in front (or over) the sample and the ones that are in the rear part (or under it), using the *Find on two surfaces option*. 
 
-The output of this protocol is a `SetOfLandmarkModels`. This object is able to store the position information of each gold bead through the tilt-series for every tilt series belonging to the set. It is possible to visualize this object with the imod viewer
+The output of this protocol is a `SetOfLandmarkModels`. This object is able to store the position information of each gold bead through the tilt-series for every tilt series belonging to the set. It is possible to visualize this object with the imod viewer. Once the landmarks are openned with imod-3dmod, then with the key `v` the trajectories can be observed.
 
 ![outputGenerateFiducialModel](HIVTutorial/HIV_fidGen_result.png)
 
@@ -263,6 +263,9 @@ The output tilt series as result of the alignment process can be visualized with
 
 > **Tip**: The `TomoViewer` can be used to check the transformation matrix, the refined tilt angles.
 
+The fiducials trajectories can also be observed opening the output SetOfLandmarks with imod-3dmod, and pressing the key `v`.
+
+![outputFiducialAlignmentviewer](HIVTutorial/HIV_fidali_result.png)
 
 # Fiducial eraser
 
@@ -275,9 +278,9 @@ Fiducials markers were used to tilt series, due to their high contrast. However,
 To execute the protocol the next paramaters are used:
 - **Input**:
 -- **Tilt series**: The raw tilt series as result of the xray eraser, `imod - xray eraser`.
--- **Threshold**: 0.9
+-- **Threshold**: 0.5
 
-![fidderForm](HIVTutorial/fidderForm.png)
+![fidderForm](HIVTutorial/HIV_fidderForm.png)
 
 The result of the protocol can be observed in the next figure
 
@@ -288,7 +291,7 @@ The result of the protocol can be observed in the next figure
 
 When the dose filter was applied to align the tilt series, the dose of the aligned tilt series was set to zero. The does filter helped for aligning tilt series. Unfortunately, some subtomogram averaging protocols requires unfiltered tilt series, it means without dose filtering. For this reason, it would be usefull to assign the alignment information to the tilt non-dose filtered tilt series. This task can be carried out with the protocol `tomo - tilt-series assign alignment`. The protocol involves two tilt series: One to take the alignment and other to set the alignment. In this tutorial the transformation matrix from the alignment will be set to the output of the x-ray eraser tilt series (see the workflow).
 
-![FormtiltseriesAssignAlignment](HIVTutorial/tiltseriesAssignAlignment.png)
+![FormtiltseriesAssignAlignment](HIVTutorial/HIV_assignAliForm.png)
 
 Note that the output of `tomo - tilt-series assign alignment` presents a non-zero dose. This can be checked by by visualizing the tilt series with `TomoViewer`, see figure.
 
