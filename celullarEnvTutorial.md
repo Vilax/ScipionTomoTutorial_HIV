@@ -280,8 +280,10 @@ It is neccesary to identify the proteins in the tomograms. The protocol `emantom
 - **Remove particles on the edge**: No
 - **Remove particles near gold fiducials**: No
 
-![cryoloPicking](celullarEnvironment/emanTemplateMatching.png)
+![emantomoPickingForm](celullarEnvironment/cellEnv_emanPickingForm.png)
 
+The results can be opened with EmanTomo, Napari or Dynamo viewers. With a high number of particles we have observed some crashes in Eman viewer. That should not happen in this tutorial
+![emantomoPickingForm](celullarEnvironment/emanTemplateMatching.png)
 
 # Subtomogram Averaging with RelionTomo
 
