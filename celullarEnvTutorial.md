@@ -240,6 +240,8 @@ Cryocare workflow is split in two steps: training and prediction.
 
 ![cryocarepredictionForm](celullarEnvironment/cellEnv_cryoCAREpredictionForm.png)
 
+![cryocarepredictionResult](celullarEnvironment/cellEnv_cryoCAREpredictionForm.png)
+
 # Picking
 
 This dataset can be picked with any of the next software packages
@@ -254,11 +256,25 @@ For this tutorial, `emantomo - template matching` will be used. This picking req
 
 ## Import a reference
 
-A reference can be imported into Scipion from a local file or from an EMDB entry.
+A reference can be imported into Scipion from a local file or from an EMDB entry. In this case we will download a Ribosome map from EMDB, the entry EMD-50827
 
-![templateMatching](celullarEnvironment/cellEnv_importVolForm.png)
+![importTemplateForm](celullarEnvironment/cellEnv_importVolForm.png)
+
+The imported volume can be visualized in slices or in chimera
+
+![importTemplateResult](celullarEnvironment/cellEnv_importVolForm.png)
 
 ## Resize the reference
+
+To perform the template matching, the reference and the tomogram must be at the same pixel size. For this reason a resize step is needed. The reconstructed and denoised tomograms present a pixel size of  A/px, . In addition, the imported volume has a boxsize much larger than the protein diameter. In order to speed up the template matching, a croping step will be also carried out. The protocol `xmipp - crop and resize` will be used with the next parameters:
+
+- **Input Volumes**: The imported one
+- **Resize volumes?**: Yes
+- **Resize option**: Sampling Rate
+- **Sampling rate**: 7.64A/px
+- **Crop volumes?**: Yes
+- **Window operation**: Window
+- **Window size**: 54
 
 ![relionCropResize](celullarEnvironment/cellEnv_cropResizeForm.png)
 
@@ -283,7 +299,7 @@ It is neccesary to identify the proteins in the tomograms. The protocol `emantom
 ![emantomoPickingForm](celullarEnvironment/cellEnv_emanPickingForm.png)
 
 The results can be opened with EmanTomo, Napari or Dynamo viewers. With a high number of particles we have observed some crashes in Eman viewer. That should not happen in this tutorial
-![emantomoPickingForm](celullarEnvironment/emanTemplateMatching.png)
+![emantomoPickingForm](celullarEnvironment/cellEnv_emanPicking_result.png)
 
 # Subtomogram Averaging with RelionTomo
 
