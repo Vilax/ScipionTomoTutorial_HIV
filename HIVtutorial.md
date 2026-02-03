@@ -196,12 +196,11 @@ The protocol can be executed with default parameters:
 
 - **Input tilt series**: The tilt series to be aligned the dose filtered one is recommened
 - **Use cummulative correlation**: No. 
-- **Generate interpolated tilt series**: Yes at bin 4 (just for visualization purpose)
 - **Tilt axis angle**: Leave it empty. It takes the axis orientation from the scipion database.
 
-> **Warning**: This protocol is quite sensitive to the tilt axis orientation. A wrong tilt axis orientation can be the suspicious of casting unusual results. If a wrong tilt axis orientation was imported, the tilt axis can be fixed in the tilt axis form of this protocol.
+> **Warning**: This protocol is quite sensitive to the tilt axis orientation. A wrong tilt axis orientation can be the main suspicious of casting unusual results. If a wrong tilt axis orientation was imported, the tilt axis can be fixed in the tilt axis form of this protocol.
 
-> **Note**: The output of this protocol is a set of tilt series. In the summary, the output tilt series presents a `+ali` flag. This flag informs about the alignment, the tilt series present an associated transformation matrix (with the estimated shifts). **The +ali indicates that matrix is associated as metadata but not applied to the tilt series**. To visualize the algined tilt series the flag of the protocol `generate interpolated tilt-series` must be enable. In the summary, the interpolated tilt series can be identified with the flag `!interp`.
+> **Note**: The output of this protocol is a set of tilt series. In the summary, the output tilt series presents a `+ali` flag. This flag informs about the alignment, the tilt series present an associated transformation matrix (with the estimated shifts). **The +ali indicates that matrix is associated as metadata but not applied to the tilt series**.
 
 ![FormCoarseAlignment](HIVTutorial/CoarseAlignment.png)
 
