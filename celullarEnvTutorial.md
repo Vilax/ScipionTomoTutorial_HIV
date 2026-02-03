@@ -464,7 +464,7 @@ Now the obtained reconstruction will be refined with the aim of pushing the reso
 
 We want to hear from you! Any comment, question, or complaints regarding this tutorial, the use of Scipion can be sent to the next email: scipion@cnb.csic.es.
 
-We also have a discord server where a cryoEM/ET community is active and in touch daily, please send us an email to scipion@cnb.csic.es to get an invitation. 
+We also have a discord server where a cryoEM/ET community is active and in touch daily, please send us an email to get an invitation. 
 
 
 # References
