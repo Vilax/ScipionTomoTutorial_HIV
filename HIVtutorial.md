@@ -82,11 +82,11 @@ In this step the acquired data will be imported into the Scipion framework. The 
 
 The .mrc files contain the acquired images, while the .mdoc files store detailed acquisition information such as sampling rate, dose per frame, and tilt axis angle. The protocol will parse the .mdoc files and store this information in the Scipion database.
 
-Protocol parameters: Microscope voltage, spherical aberration, amplitude contrast, magnification, pixel size, tilt axis angle or dose are empty. An empty entry means that the parameter will be read from the mdoc. However, if the user introduce a parameter, Scipion will take the introduced value from the user instead of the mdoc parameter. This allows to correct possible errors in the mdoc file. 
+Protocol parameters: Microscope voltage, spherical aberration, amplitude contrast, magnification, pixel size, tilt axis angle or dose are empty. An empty entry means that the parameter will be read from the mdoc. However, if the user introduces a parameter, Scipion will take the introduced value from the user instead of the mdoc parameter. This allows to correct possible errors in the mdoc file. 
 
 The used parameters are shown in the Figure. The critical ones are:
 - **Files directory:** Set the path of the movies. Note that the mdoc files must be in the same folder.
-- **Pattern:** This tutorial uses mdoc. Set as `*.mdoc` to import all mdoc files.
+- **Pattern:** This tutorial uses mdoc. Set as `*.mdoc` to import all mdoc files. 
 - **Tomo5 mdoc:** Set as No. 
 - **Microscope Voltage:** 300kV
 - **Spherical Aberration:** 2.7 mm
