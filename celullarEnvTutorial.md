@@ -230,11 +230,11 @@ For this tutorial, emantomo - template matching will be used
 
 ## Import a reference
 
-![templateMatching](celullarEnvironment/importVolume.png)
+![templateMatching](celullarEnvironment/cellEnv_importVolForm.png)
 
 ## Resize the reference
 
-![relionCropResize](celullarEnvironment/cropResize.png)
+![relionCropResize](celullarEnvironment/cellEnv_cropResizeForm.png)
 
 ## Emantomo template matching
 
