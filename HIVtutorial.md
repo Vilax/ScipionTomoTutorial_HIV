@@ -161,7 +161,7 @@ The protocol can be executed with the default parameters.
 
 > **Tip**: The dose filter helps in the tilt series alignment step.
 
-> **Warning**: As a consequence of the dose filter, the output tilt series will present a zero dose values (see output with tomoViewer). If the dose filtered tilt series are later aligned, then it will be neccesary to associate the alignment to the unfiltered tilt series (using `tomo - assign alignment`). Otherwise the subtomogram averaging algorithms that make use of the dose will work in a suboptimal manner.
+> **Warning**: As a consequence of the dose filter, the output tilt series will present a zero dose values (see output with tomoViewer). If the dose filtered tilt series are later aligned, then it will be neccesary to associate the alignment to the unfiltered tilt series (using `tomo - assign alignment`). Otherwise the subtomogram averaging algorithms that make use of the dose will work in a suboptimal manner, this can be specially import for the STA with reliontomo.
 
 ![FormDoseFilter](HIVTutorial/DoseFilter.png)
 
