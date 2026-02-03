@@ -389,12 +389,7 @@ To reconstruct the tomogram from the tilt series the protocol `tomo3d - reconstr
 
 > **Tip**: WBP is faster than the SIRT method, but SIRT provides higher contrast. To visualize cellular enviroments SIRT is recommended, or to pick subtomogram with a template matching approach. If classical subtomogram averaging is going to be carried out, WBP is recommended.
 
-The input of the reconstruction will be the previous reconstructed tomograms with the next parameters:
-
- - **Tomograms**: The reconstructed ones
- - **Denoising method**: Edge-Enhancing Diffusion (EED).
- - **Sigma Gaussian Filter**: 0.5
- - **Number of iterations**: 10
+The input of the reconstruction will be the binned CTF corrected tilt series. A SIRT recontruction is recommended in this case to produced tomograms with high contrast. The `Tomogram Thickness` was set to 300 voxels.
 
 ![tomo3d](HIVTutorial/HIV_tomo3dForm.png)
 
@@ -410,13 +405,19 @@ The output can be visualized by clicking on Analyze results or alternatively by 
 
 To highlight the signal o the HIV it is possible to use a denoising algorithm. In this case, the procol `tomo3d - denoise tomogram`. Tomo3D provides two different denoising algorithms: EDD and Bflow. In this tutorial the EED mehtod will be used.
 
-The input of the reconstruction will be the binned CTF corrected tilt series. A SIRT recontruction is recommended in this case to produced tomograms with high contrast. The `Tomogram Thickness` was set to 300 voxels.
+The input of the denoising will be the previous reconstructed tomograms with the next parameters:
+
+ - **Tomograms**: The reconstructed ones
+ - **Denoising method**: Edge-Enhancing Diffusion (EED).
+ - **Sigma Gaussian Filter**: 0.5
+ - **Number of iterations**: 10
 
 ![tomo3ddenoise](HIVTutorial/HIV_tomo3dDenoising_Form.png)
 
-The output can be visualized by clicking on Analyze results or alternatively by choosing the visualization tool by right-clicking on the output in the Summary box. In 3dmod, it is interesting to visualize the tomogram in slices along the 3 axis, this can be done with `Ctrl+x`
+The output can be visualized by clicking on Analyze results or alternatively by choosing the visualization tool by right-clicking on the output in the Summary box.
 
 ![tomo3ddenoiseResult](HIVTutorial/HIV_tomo3dDenoising_result.png)
+
 # Directional picking with dynamo
 
 **Reference**: [D. Castaño-Diez et.al 2012](https://doi.org/10.1016/j.jsb.2011.12.017)
