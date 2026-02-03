@@ -575,8 +575,9 @@ The reconstructed protein can be visualized with Scipion (to see the slices) or 
 ![reconstructParticlebin2Result](HIVTutorial/reconstructParticlebin2Result.png)
 
 
-## Refine volume at bin 2
+## Further refinement
 
+The user can continue refining at higher binning (Bin 1) to reach a high resolution structure. To do that the previous refinement cycle must be reapeted.
 
 
 # Contact us
