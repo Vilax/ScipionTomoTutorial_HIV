@@ -364,7 +364,7 @@ The initial model can be estimated with the protocol `reliontomo - 3D initial mo
 
 - **Number of VDAM mini-batches**: 40. This is the number of iterations to be carried out.
 - **Regularization parameter**: 4.0 It goes from 0 to 4. Values close to 4 put more strenght on the data.
-- **Circular Mask diameter**: 350 A. A good value is to set the protein diameter
+- **Circular Mask diameter**: 330 A. A good value is to set the protein diameter
 - **Symmetry group**: C1. In this case the protein has no symmetry. For initial volumes a C1 symmetry is a good practice.
 - **Prior width on tilt angle**: -1. It defines the prior on the tilt to be estimated. -1 means no priors
 ![relionInitialModelForm](celullarEnvironment/cellEnv_initialModelForm.png)
@@ -385,7 +385,7 @@ Using the initial model, it is possible to refine it to enhance the map quality 
 - **Symmetry group**: C1
 - **Do CTF-correction?**: Yes
 - **Ignore CTF until first peak?**: No
-- **Circular Mask diameter**: 350A.
+- **Circular Mask diameter**: 330A.
 - **Mask particles with zeros**: Yes
 - **Use blush regularization**: No
 - **Initial angular sampluing interval**: 7.5 deg
@@ -398,7 +398,7 @@ Using the initial model, it is possible to refine it to enhance the map quality 
 
 
 The result of this protocol should be similar to the one shown in the Figure.
-.
+
 ![relionAutorefinebin6Result](celullarEnvironment/relionAutorefine1_bin8.png)
 ![relionAutorefinebin6Result](celullarEnvironment/relionAutorefine2_bin8.png)
 
