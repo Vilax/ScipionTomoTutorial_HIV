@@ -154,6 +154,8 @@ The input of the aretomo will be the imported tilt series. To reduce the computa
 
 The output can be visualized by clicking on Analyze results or alternatively by choosing the visualization tool by right-clicking on the output in the Summary box.
 
+![aretomoResult](celullarEnvironment/cellEnv_aretomoTomo_result.png)
+
 # CTF correction
 
 **Reference**: [J.R. Kremer 1996](https://doi.org/10.1006/jsbi.1996.0013)
@@ -164,7 +166,7 @@ The output can be visualized by clicking on Analyze results or alternatively by 
 
 The CTF correction can be performed with the protocol `imod - correct CTF`. The input of this protocol are the tilt series with assigned alignment and a set of CTFs previously estimated. The tilt series will be the ones we assigned the alignment information. The used parameters for this protocol will be left as default parameters.
 
-![FormImodCTFcorr](celullarEnvironment/ctfCorrection.png)
+![FormImodCTFcorr](celullarEnvironment/cellEnv_imodCTFcorrForm.png)
 
 # Tilt series preprocess
 
@@ -174,7 +176,7 @@ The CTF correction can be performed with the protocol `imod - correct CTF`. The 
 
 The CTF-corrected tilt series will be the input data for a later tomogram reconstruction. Up to this step we have worked with the full-size tilt series (binning 1). IF the tomograms are reconstructed at bin 1, they will be very heavy. To safe disc and enhance the SNR of the tomogram the tilt series will be binned. The protocol `imod - preprocess tilt series` allows to perform different preprocessing operation on the tilt series, as binning or adjusting the gray values. 
 
-![imodTsPreprocess](celullarEnvironment/tspreprocess.png)
+![imodTsPreprocess](celullarEnvironment/cellEnv_imodpreprocessForm.png)
 
 # Tomogram reconstruction
 
