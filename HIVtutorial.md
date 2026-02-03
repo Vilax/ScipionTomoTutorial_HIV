@@ -203,7 +203,7 @@ The protocol can be executed with default parameters:
 > **Note**: The output of this protocol is a set of tilt series. In the summary, the output tilt series presents a `+ali` flag. This flag informs about the alignment, the tilt series present an associated transformation matrix (with the estimated shifts). **The +ali indicates that matrix is associated as metadata but not applied to the tilt series**.
 
 ![FormCoarseAlignment](HIVTutorial/HIV_corsePreali_form.png)
-![ResultCoarseAlignment](HIV_coarsePreali_result.png)
+![ResultCoarseAlignment](HIVTutorial/HIV_coarsePreali_result.png)
 
 
 ### IMOD - generate fiducial model
