@@ -133,7 +133,7 @@ To exclude a tilt images just select the corresponding image and press the `spac
 - **Re-stack**: A new stack of tilt series will be created without the excluded views. From this point the later protocols will not have access to the excluded views.
 - **Marked as excluded**: The excluded views are marked but not removed from the stack. The later protocols will process these images (if it is possible, this depends on the protocol), but they will be kept marked as excluded. This allows to rescue the views.
 
-The views to exclude for the small dataset are the ones at -60.0º, -57.0º, -54.0º and 60.0º.
+The views to exclude for the small dataset are the ones at -60.0º, -57.0º, -54.0º and 60.0º. In this tutorial we will use the re-stacked tilt series.
 
 ![excludeTsViewer](HIVTutorial/exclViews_TS_03.png)
 
