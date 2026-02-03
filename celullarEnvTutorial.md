@@ -152,7 +152,9 @@ The input of the aretomo will be the imported tilt series. To reduce the computa
 
 ![aretomoForm](celullarEnvironment/cellEnv_aretomoForm.png)
 
-The output can be visualized by clicking on Analyze results or alternatively by choosing the visualization tool by right-clicking on the output in the Summary box.
+The output can be visualized by clicking on Analyze results or alternatively by choosing the visualization tool by right-clicking on the output in the Summary box. To enhance the visualization an average of 10 slices is shown in the figure.
+
+ > Tip: It can be observed from the side views of the tomogram, that the tomogram thickness is much thinner than the thickness of the tomogram. For this sample, the tomogram thickness should be around 250 px. We have aligned with Aretomo and also reconstructed to measure the thickness. Later we will reconstruct (in this tutorial with imod) with a thickness of 350px to work with a more approxiate tomogram thickness. The extra 100px are due to we want to leave 50px in the top and in the botton.
 
 ![aretomoResult](celullarEnvironment/cellEnv_aretomoTomo_result.png)
 
