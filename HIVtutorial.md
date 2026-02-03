@@ -143,7 +143,7 @@ The views to exclude for the small dataset are the ones at -60.0º, -57.0º, -54
 
 **Plugin**: [scipion-em-imod](https://github.com/scipion-em/scipion-em-imod)
 
-This protocol is completely optional and is not included in most of the workflows, however, it is a good practice to remove bright points in the images. The interaction of electrons with the sample can generate X-rays. They can be detected by the camera, and identified in the images as very bright pixels. Therefore, the X-ray peaks are an unwanted effect that should be corrected. The protocol `imod - Xray eraser` allows to remove these bright points. The input will be a tilt series (output of the movie alignment). This protocol also can be executed with default parameters.
+This protocol is completely optional and is not included in most of the workflows, however, it is a good practice to remove bright points in the images. The interaction of electrons with the sample can generate X-rays. They can be detected by the camera, and identified in the images as very bright pixels. Therefore, the X-ray peaks are an unwanted effect that should be corrected. The protocol `imod - Xray eraser` allows to remove these bright points. The input will be a tilt series after excluding the views (output of the movie alignment). This protocol also can be executed with default parameters.
 
 ![FormXrayEraser](HIVTutorial/XrayEraser.png)
 
