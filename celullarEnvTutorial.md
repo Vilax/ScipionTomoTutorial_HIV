@@ -254,7 +254,10 @@ The output of this protocol is a new object, a cryoCARE model, that can only be 
 
 ## cryoCARE prediction
 
+Once the cryoCARE model has been trained, it can be applied to the reconstructed tomograms. 
 ![cryocarepredictionForm](celullarEnvironment/cellEnv_cryoCAREpredictionForm.png)
+
+The result of the prediction can be visualized with the `tomoViewer` opening the tomograms with `imod-3dmod` as it is shown in the figure. Note how the ribosome are clearly visible in the tomogram.
 
 ![cryocarepredictionResult](celullarEnvironment/cellEnv_cryoCAREprediction_result.png)
 
@@ -342,6 +345,8 @@ To extract the pseudo subtomograms the next input data will be required:
 ![relionTomoExtract](celullarEnvironment/cellEnv_relionExtract_bin8Form.png)
 
 > **Tip**: The 3D pseudo-subtomograms work better for obtaining a 3D initial model than the 2D pseudo-subtomograms.
+
+In he extracted pseudo subtomograms can barely be visualized the ribosomes. However, the output of the protocol also provides a landmarkmodel, with the positions of the picked particles on the tilt series.
 
 ![relionTomoExtract](celullarEnvironment/cellEnv_relionExtract_bin8_result.png)
 
