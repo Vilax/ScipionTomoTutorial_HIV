@@ -456,7 +456,7 @@ Now the obtained reconstruction will be refined with the aim of pushing the reso
 - **Prior width on tilt angle**: -1 Meaning no prior
 
 ![relionReconstructParticlebin41](celullarEnvironment/relionAutorefine1_bin4.png)
-![relionReconstructParticlebin42](celullarEnvironment/relionAutorefine2_bin4.png)
+![relionReconstructParticlebin42](celullarEnvironment/cellEnv_autorefine_bin4_result.png)
 
 
   
