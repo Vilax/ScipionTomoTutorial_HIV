@@ -375,7 +375,6 @@ There are many methods to reconstruct tomogram in ScipionTomo framework, as they
  - NovaCTF
  - AreTomo
  - Emantomo
- - Reliontomo
 
 In this tutorial tomo3D will be used.
 
@@ -392,11 +391,11 @@ To reconstruct the tomogram from the tilt series the protocol `tomo3d - reconstr
 
 The input of the reconstruction will be the binned CTF corrected tilt series. A SIRT recontruction is recommended in this case to produced tomograms with high contrast. The `Tomogram Thickness` was set to 300 voxels.
 
-![tomo3d](HIVTutorial/tomo3d.png)
+![tomo3d](HIVTutorial/HIV_tomo3dForm.png)
 
-The output can be visualized by clicking on Analyze results or alternatively by choosing the visualization tool by right-clicking on the output in the Summary box.
+The output can be visualized by clicking on Analyze results or alternatively by choosing the visualization tool by right-clicking on the output in the Summary box. In 3dmod, it is interesting to visualize the tomogram in slices along the 3 axis, this can be done with `Ctrl+x`
 
-![tomo3dSIRTtomo](HIVTutorial/tomo3DSIRT.png)
+![tomo3dSIRTtomo](HIVTutorial/HIV_tomo3d_result.png)
 
 
 # Directional picking with dynamo
