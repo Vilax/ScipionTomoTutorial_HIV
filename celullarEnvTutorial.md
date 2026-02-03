@@ -262,7 +262,7 @@ A reference can be imported into Scipion from a local file or from an EMDB entry
 
 The imported volume can be visualized in slices or in chimera
 
-![importTemplateResult](celullarEnvironment/cellEnv_importVolForm.png)
+![importTemplateResult](celullarEnvironment/cellEnv_importVol_result.png)
 
 ## Resize the reference
 
@@ -299,7 +299,8 @@ It is neccesary to identify the proteins in the tomograms. The protocol `emantom
 ![emantomoPickingForm](celullarEnvironment/cellEnv_emanPickingForm.png)
 
 The results can be opened with EmanTomo, Napari or Dynamo viewers. With a high number of particles we have observed some crashes in Eman viewer. That should not happen in this tutorial
-![emantomoPickingForm](celullarEnvironment/cellEnv_emanPicking_result.png)
+
+![emantomoPickingResult](celullarEnvironment/cellEnv_emanPicking_result.png)
 
 # Subtomogram Averaging with RelionTomo
 
