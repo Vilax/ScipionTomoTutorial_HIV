@@ -203,7 +203,7 @@ The protocol can be executed with default parameters:
 > **Note**: The output of this protocol is a set of tilt series. In the summary, the output tilt series presents a `+ali` flag. This flag informs about the alignment, the tilt series present an associated transformation matrix (with the estimated shifts). **The +ali indicates that matrix is associated as metadata but not applied to the tilt series**.
 
 ![FormCoarseAlignment](HIVTutorial/HIV_corsePreali_form.png)
-![FormCoarseAlignment](HIVTutorial/HIV_corsePreali_form.png)
+![ResultCoarseAlignment](HIV_coarsePreali_result.png)
 
 
 ### IMOD - generate fiducial model
@@ -227,7 +227,7 @@ We will use as input the Tilt Series from coarse prealignment with the next para
 
 The output of this protocol is a `SetOfLandmarkModels`. This object is able to store the position information of each gold bead through the tilt-series for every tilt series belonging to the set. It is possible to visualize this object with the imod viewer
 
-![outputGenerateFiducialModel](HIVTutorial/outputGenerateFiducialModel.png)
+![outputGenerateFiducialModel](HIVTutorial/HIV_fidGen_result.png)
 
 
 ### IMOD - fiducial alignment
@@ -259,7 +259,7 @@ The output tilt series as result of the alignment process can be visualized with
 
 > **Note**: The output tilt series present a dose equal to zero. This is because the tilt series were dose filtered in a previous step.
 
-![outputFiducialAlignmentviewer](HIVTutorial/outputFiducialAlignmentviewer.png)
+![outputFiducialAlignmentviewer](HIVTutorial/HIV_fidali_result.png)
 
 > **Tip**: The `TomoViewer` can be used to check the transformation matrix, the refined tilt angles.
 
