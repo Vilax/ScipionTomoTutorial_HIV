@@ -118,6 +118,29 @@ The most important parameters are:
 
 The other tabs of the protocol (motioncor params, gain and defects, EER, Mag corr) can be executed with the default parameters.
 
+# Excluding views and CTFs
+
+
+
+# Excluding views
+
+**Reference**: [J. Jimenez de la Morena et.at. 2022](https://doi.org/10.1016/j.jsb.2022.107872)
+
+**Plugin**: [scipion-em-tomo](https://github.com/scipion-em/scipion-em-tomo)
+
+Views or tilt images can be excluded with the `TomoViewer`. The main reasons to exclude a tilt image are:
+- **Bad quality image**: The tilt image is dark, presents stripes or was exposed to a high dosee.
+- **Misaligned image**: The tilt image is misaligned. The tilt series sequence presents a *jump* at that tilt angle, making a non smooth transition between tilt images.
+
+To exclude a tilt images just select the corresponding image and press the `space`, alternatively it can be marked by clicking on the exclude box. The excluded images will be highlighted in red. Finally, it will be neccesary to generate a new set of tilt series by clicking on the botton `Save`. This botton opens a new window asking if the user wants to re-stack the tilt series, or if the user preffers to mark the tilt images as excluded. The differences are the next ones:
+
+- **Re-stack**: A new stack of tilt series will be created without the excluded views. From this point the later protocols will not have access to the excluded views.
+- **Marked as excluded**: The excluded views are marked but not removed from the stack. The later protocols will process these images (if it is possible, this depends on the protocol), but they will be kept marked as excluded. This allows to rescue the views.
+
+The views to exclude for the small dataset are the ones at -60.0º, -57.0º, -54.0º and 60.0º.
+
+![excludeTsViewer](HIVTutorial/excludeTsViewer.png)
+
 # X-ray eraser
 
 **Reference**: [J.R. Kremer 1996](https://doi.org/10.1006/jsbi.1996.0013)
@@ -312,28 +335,7 @@ The result of any CTF estimation that can be visualized by clicking on Analyze r
 
 ![CTFviewer](HIVTutorial/CTFviewer.png)
 
-# Excluding views and CTFs
-
-**Reference**: [J. Jimenez de la Morena et.at. 2022](https://doi.org/10.1016/j.jsb.2022.107872)
-
-**Plugin**: [scipion-em-tomo](https://github.com/scipion-em/scipion-em-tomo)
-
-ScipionTomo provides viewers to exclude views in the tilt series of CTF estimations. They can be carried out with the `TomoViewer` or the `CTFViewer`.
-
-## Excluding views
-
-Views or tilt images can be excluded with the `TomoViewer`. The main reasons to exclude a tilt image are:
-- **Bad quality image**: The tilt image is dark, presents stripes or was exposed to a high dosee.
-- **Misaligned image**: The tilt image is misaligned. The tilt series sequence presents a *jump* at that tilt angle, making a non smooth transition between tilt images.
-
-To exclude a tilt images just select the corresponding image and press the `space`, alternatively it can be marked by clicking on the exclude box. The excluded images will be highlighted in red. Finally, it will be neccesary to generate a new set of tilt series by clicking on the botton `Save`. This botton opens a new window asking if the user wants to re-stack the tilt series, or if the user preffers to mark the tilt images as excluded. The differences are the next ones:
-
-- **Re-stack**: A new stack of tilt series will be created without the excluded views. From this point the later protocols will not have access to the excluded views.
-- **Marked as excluded**: The excluded views are marked but not removed from the stack. The later protocols will process these images (if it is possible, this depends on the protocol), but they will be kept marked as excluded. This allows to rescue the views.
-
-![excludeTsViewer](HIVTutorial/excludeTsViewer.png)
-
-## Excluding CTFs
+# Excluding CTFs
 
 CTFs can be excluded with the `CTFTomoViewer`. The main reasons to exclude a CTF are: a bad estimation of the defocus value, or a high astigmatism. To exclude a CTF just select the corresponding CTF and press the `space`, alternatively it can be marked by clicking on the exclude box. The excluded CTFs will be highlighted in red. Finally, it is neccesary to generate a new set of CTF by clicking on the botton `Generate subsets`. 
 
