@@ -54,7 +54,7 @@ The used parameters are shown in the Figure. The critical ones are:
 - **Dose (e/A^2):** Initial dose 0.0, dose per tilt - leave empty. This value will be read from the mdoc file.
 - **Gain image:** Set here the path to the gain image.
   
-![Import tilt series movies Scipion form](celullarEnvironment/importmovies.png)
+![Import tilt series movies Scipion form](celullarEnvironment/cellEnv_importTSmovies.png)
 
 # Movie alignment and CTF estimation with Warp
 
@@ -64,8 +64,7 @@ The used parameters are shown in the Figure. The critical ones are:
 
 Once the tilt series movies were imported the acquired frames at each tilt angle will be aligned to obtain tilt series. The protocol `warp - tilt-series motion and ctf estimation` will find and correct the relative movement between the frames. This protocol also allows to estimate the CTF, it means the defocus of ech tilt image.
 
-![warp - tilt-series motion and ctf estimation form](celullarEnvironment/warpMotionCor1.png)
-![warp - tilt-series motion and ctf estimation form](celullarEnvironment/warpMotionCor2.png)
+![warp - tilt-series motion and ctf estimation form](celullarEnvironment/cellEnv_warpForm.png)
 
 The most important parameters are:
 - **Input movies:** The imported set of tilt series movies from the previous step.
@@ -88,6 +87,7 @@ The most important parameters are:
 
 The output of the protocol will be a set of tilt series and a set of CTFs. It is possible to visualize these set with the `TomoViewer` and `CTFtomoViewer`.
 
+![warp - tilt-series motion and ctf estimation result](celullarEnvironment/cellEnv_warp_result.png)
 
 # Excluding views and CTFs
 
@@ -97,12 +97,9 @@ Some views can be excluded with the `TomoViewer`. The main reasons to exclude a 
 
 For this dataset the low and high tilts will be removed. The first 7 negative tilts and the last 4 (positive tilts).
 
-
-
 ## Excluding CTFs
 
 > There is no need to exclude CTFs for this dataset. The reader can do it if he wishes.
-
 
 # X-ray eraser
 
@@ -112,7 +109,7 @@ For this dataset the low and high tilts will be removed. The first 7 negative ti
 
 The interaction of electrons with the sample can generate X-rays. They can be detected by the camera, and identified in the images as very bright pixels. Therefore, the X-ray peaks are an unwanted effect that should be corrected. The protocol `imod - Xray eraser` allows to remove these bright points. The input will be a tilt series (output of the movie alignment). This protocol also can be executed with default parameters.
 
-![FormXrayEraser](celullarEnvironment/XrayEraser.png)
+![FormXrayEraser](celullarEnvironment/cellEnv_xrayForm.png)
 
 The ouput of this protocol will be a set of Tilt Series that looks almost identical to the input tilt series.
 
@@ -132,7 +129,7 @@ In this tutorial `aretomo - tilt series align and reconstruct` will be used. The
 
 **Plugin**: [scipion-em-aretomo](https://github.com/scipion-em/scipion-em-aretomo)
 
-To reconstruct the tomogram from the tilt series the protocol `tomo3aretomo - tilt series align and reconstruct`. This protocol performs the alignment and reconstruction at once. The result will be a set of aligned tilt series and the reconstructed tomogram. Also the CTF estimation is possible if the user select the CTF estimation option. It offers two different reconstruction algorithms: Weighted Back projection (WBP) and Simultaneous algebraic reconstruction technique (SART).
+To reconstruct the tomogram from the tilt series the protocol `aretomo - tilt series align and reconstruct`. This protocol performs the alignment and reconstruction at once. The result will be a set of aligned tilt series and the reconstructed tomogram. Also the CTF estimation is possible if the user select the CTF estimation option. It offers two different reconstruction algorithms: Weighted Back projection (WBP) and Simultaneous algebraic reconstruction technique (SART).
 
 > **Tip**: WBP is faster than the SART method, but SART provides higher contrast. To visualize cellular enviroments SART is recommended, or to pick subtomogram with a template matching approach.
 
@@ -153,7 +150,7 @@ The used parameters will be
 
 The input of the aretomo will be the imported tilt series. To reduce the computational burden, the WBP algorithm will be chosen, and the tomomgrams will be reconstructed at binning 4.
 
-![aretomoForm](celullarEnvironment/AretomoAlignmetn.png)
+![aretomoForm](celullarEnvironment/cellEnv_aretomoForm.png)
 
 The output can be visualized by clicking on Analyze results or alternatively by choosing the visualization tool by right-clicking on the output in the Summary box.
 
