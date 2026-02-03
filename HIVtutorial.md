@@ -118,10 +118,6 @@ The most important parameters are:
 
 The other tabs of the protocol (motioncor params, gain and defects, EER, Mag corr) can be executed with the default parameters.
 
-# Excluding views and CTFs
-
-
-
 # Excluding views
 
 **Reference**: [J. Jimenez de la Morena et.at. 2022](https://doi.org/10.1016/j.jsb.2022.107872)
@@ -139,7 +135,7 @@ To exclude a tilt images just select the corresponding image and press the `spac
 
 The views to exclude for the small dataset are the ones at -60.0º, -57.0º, -54.0º and 60.0º.
 
-![excludeTsViewer](HIVTutorial/excludeTsViewer.png)
+![excludeTsViewer](HIVTutorial/exclViews_TS_03.png)
 
 # X-ray eraser
 
