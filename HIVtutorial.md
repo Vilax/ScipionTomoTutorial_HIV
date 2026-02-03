@@ -194,7 +194,7 @@ The first step of the IMOD alignment is the protocol `imod - coarse prealignment
 
 The protocol can be executed with default parameters:
 
-- **Input tilt series**: The tilt series to be aligned the dose filtered one is recommened
+- **Input tilt series**: The tilt series to be aligned the dose filtered one is recommended.
 - **Use cummulative correlation**: No. 
 - **Tilt axis angle**: Leave it empty. It takes the axis orientation from the scipion database.
 
@@ -211,11 +211,12 @@ Once the coarse prealignment process is finished, it is possible to generate the
 
 The landmark model generation provides information of the position of each gold bead in the image. Specifically, it defines the 2D coordinates of one fiducial along all the images in which it has been detected (not necessarily the whole tilt-series). Thus, it is possible to track the position of several landmarks along the whole tilt series, a posterior step will align the tilt series based on these landmarks. If the sample is fiducialless, then the landmarks will be centers of some patches defined in the tilt images.
 
-We will use as input of this algorithm the previous *non-interpolated* Tilt Series from coarse prealignment with the next parameters:
+We will use as input the Tilt Series from coarse prealignment with the next parameters:
 
 - **Model generation**: Make seed and Track. This is the fiducial based alignment
 - **Tilt series**: The output of the imod - coarse prealignment
 - **Fiducial diameter (nm)**: 10 nm
+- **Nuber of fiducials**: 10
 - **Find on two surfaces**: Yes
 - **Track with fiducial model as seed**: Yes
 
