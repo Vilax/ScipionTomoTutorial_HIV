@@ -440,11 +440,11 @@ Now the obtained reconstruction will be refined with the aim of pushing the reso
 - **Reference Mask**: Leave empty, we lack of resolution for it
 - **Is initial 3D map on absolute greyscale?1**: Yes
 - **Resize references if needed?**: Yes
-- **Initial low-pass filter (A)**: 15A
+- **Initial low-pass filter (A)**: 17A
 - **Symmetry group**: C1
 - **Do CTF-correction?**: Yes
 - **Ignore CTF until first peak?**: No
-- **Circular Mask diameter**: 35A.
+- **Circular Mask diameter**: 320A.
 - **Mask particles with zeros**: Yes
 - **Use blush regularization**: No
 - **Initial angular sampluing interval**: 7.5 deg
