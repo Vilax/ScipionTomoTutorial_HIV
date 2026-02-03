@@ -329,7 +329,7 @@ The CTF will be estimated with the protocol `cistem - tilt-series ctffind`. The 
 > **Tip**: A narrow defocus range ensure a better defocus estimation. A good approach is to provide a range centered in the nominal defocus of the tilt series acquisition. This information is contained in the mdoc files.
 
 
-![FormCTFfind5](HIVTutorial/HIV_CTFcistemForm)
+![FormCTFfind5](HIVTutorial/HIV_CTFcistemForm.png)
 
 The result of any CTF estimation that can be visualized by clicking on Analyze results or alternatively by right-clicking on the output, in the Summary panel (low area of the main Scipion window). The viewer will open a window with the list of SetOfCTFTomoSeries corresponding to each tilt series. In this window the defocus, astigmatism and resolution associated to each tilt image can be visualized. Also, the window presents a summary plot with the defocus and resolution per tilt image. This plot will be of special interest to validate the estimation of the CTF.
 
