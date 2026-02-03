@@ -202,7 +202,8 @@ The protocol can be executed with default parameters:
 
 > **Note**: The output of this protocol is a set of tilt series. In the summary, the output tilt series presents a `+ali` flag. This flag informs about the alignment, the tilt series present an associated transformation matrix (with the estimated shifts). **The +ali indicates that matrix is associated as metadata but not applied to the tilt series**.
 
-![FormCoarseAlignment](HIVTutorial/CoarseAlignment.png)
+![FormCoarseAlignment](HIVTutorial/HIV_corsePreali_form.png)
+![FormCoarseAlignment](HIVTutorial/HIV_corsePreali_form.png)
 
 
 ### IMOD - generate fiducial model
@@ -220,7 +221,7 @@ We will use as input the Tilt Series from coarse prealignment with the next para
 - **Find on two surfaces**: Yes
 - **Track with fiducial model as seed**: Yes
 
-![FormGenerateFiducialModel](HIVTutorial/GenerateFiducialModel.png)
+![FormGenerateFiducialModel](HIVTutorial/HIV_fidGen_form.png)
 
 > **Tip**: In samples with gold beads (fiducials), it is important to properly set the fiducial radius (in nanometers) since, if the indicated size is significantly different from the real one, the algorithm will fail in the fiducial location and posterior tracking. Also, it is possible to set the algorithm to differentiate between those gold beads that are in front (or over) the sample and the ones that are in the rear part (or under it), using the *Find on two surfaces option*. 
 
@@ -337,7 +338,7 @@ The result of any CTF estimation that can be visualized by clicking on Analyze r
 
 CTFs can be excluded with the `CTFTomoViewer`. The main reasons to exclude a CTF are: a bad estimation of the defocus value, or a high astigmatism. To exclude a CTF just select the corresponding CTF and press the `space`, alternatively it can be marked by clicking on the exclude box. The excluded CTFs will be highlighted in red. Finally, it is neccesary to generate a new set of CTF by clicking on the botton `Generate subsets`. 
 
-![excludeCTFViewer](HIVTutorial/excludeCTFViewer.png)
+![excludeCTFViewer](HIVTutorial/exclDef_TS_03.png)
 
 # CTF correction
 
