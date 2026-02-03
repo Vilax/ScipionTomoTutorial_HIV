@@ -45,7 +45,7 @@ Protocol parameters: Microscope voltage, spherical aberration, amplitude contras
 The used parameters are shown in the Figure. The critical ones are:
 - **Files directory:** Set the path of the movies. Note that the mdoc files must be in the same folder.
 - **Pattern:** This tutorial uses mdoc. Set as `*.mdoc` to import all mdoc files.
-- **Tomo5 mdoc:** Set as No. 
+- **Tomo5 mdoc:** Set as Yes. 
 - **Microscope Voltage:** 300kV
 - **Spherical Aberration:** 2.7 mm
 - **Amplitude contrast:**  0.1
