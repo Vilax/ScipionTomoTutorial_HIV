@@ -87,7 +87,7 @@ The most important parameters are:
 
 The output of the protocol will be a set of tilt series and a set of CTFs. It is possible to visualize these set with the `TomoViewer` and `CTFtomoViewer`.
 
-![warp - tilt-series motion and ctf estimation result](celullarEnvironment/cellEnv_warp_result.png)
+![warp - tilt-series motion and ctf estimation excl](celullarEnvironment/cellEnv_warpExclViews.png)
 
 # Excluding views and CTFs
 
@@ -99,7 +99,7 @@ For this dataset the low and high tilts will be removed. The first 7 negative ti
 
 ## Excluding CTFs
 
-> There is no need to exclude CTFs for this dataset. The reader can do it if he wishes.
+> There is no need to exclude CTFs for this dataset, because all views with a wrong defocus were excluded as views, however, the reader can do it if he wishes.
 
 # X-ray eraser
 
@@ -225,10 +225,12 @@ This dataset can be picked with any of the next software packages
 * Gapstop  - template matching
 * Deepfinder
 
-For this tutorial, emantomo - template matching will be used
+For this tutorial, `emantomo - template matching` will be used. This picking requires a refence, for that reason a ribosome reconstruction from EMDB will be download
 
 
 ## Import a reference
+
+A reference can be imported into Scipion from a local file or from an EMDB entry.
 
 ![templateMatching](celullarEnvironment/cellEnv_importVolForm.png)
 
