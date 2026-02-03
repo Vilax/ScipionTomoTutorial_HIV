@@ -21,7 +21,7 @@ toc-own-page: true
 
 This tutorial can be carried out with:
 - **Small dataset**: Quick tutorial with a single tilt series (recommended), it obtains a low resolution map.
-- **Large dataset**: Long tutorial with 5 tilt series, it obtains a high reoslution structure.
+- **Large dataset**: Long tutorial with 5 tilt series, it obtains a high resolution structure.
 
 Both datasets are subsets of the EMPIAR entry [EMPIAR-10164](https://www.ebi.ac.uk/empiar/EMPIAR-10164), see the reference [B. Turonova et.al 2020](https://doi.org/10.1126/science.abd5223)
 
