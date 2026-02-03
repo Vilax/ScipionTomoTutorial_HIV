@@ -369,13 +369,9 @@ The initial model can be estimated with the protocol `reliontomo - 3D initial mo
 - **Prior width on tilt angle**: -1. It defines the prior on the tilt to be estimated. -1 means no priors
 ![relionInitialModelForm](celullarEnvironment/cellEnv_initialModelForm.png)
 
-![relionInitialModelResult](celullarEnvironment/cellEnv_initialModel_result.png)
-
-
-
 ## 3D Auto-refine at bin 8
 
-Using the initial model, it is possible to refine it to enhance the map quality pushing the resolution. Despite at binnin 10 the initial volume presents enought quality, we will enhance a litle bit more the map reaching Nyquist resolution, and then in a later step extract the pseudo-subtomogram at a smaler pixel size. To refine the model, the protocol `reliontomo - 3D auto-refine` can be used. The input will be the extracted **3D** pseudo-subtomogram at bin 8 and the estimated initial model. The refinement parameter will be. 
+Using the initial model, it is possible to refine it to enhance the map quality pushing the resolution. Despite at binnin 8 the initial volume presents enought quality, we will enhance a litle bit more the map reaching Nyquist resolution, and then in a later step extract the pseudo-subtomogram at a smaler pixel size. To refine the model, the protocol `reliontomo - 3D auto-refine` can be used. The input will be the extracted **3D** pseudo-subtomogram at bin 8 and the estimated initial model. The refinement parameter will be. 
 
 - **Pseudo-subtomograms**: The extracted 3D-pseudosubtomograms. Despite for refining the 2D-psedosubtomograms are recommended, at this so low resolution the 3D will be used.
 - **Reference volume**: The obtained initial volume
@@ -385,7 +381,7 @@ Using the initial model, it is possible to refine it to enhance the map quality 
 - **Symmetry group**: C1
 - **Do CTF-correction?**: Yes
 - **Ignore CTF until first peak?**: No
-- **Circular Mask diameter**: 330A.
+- **Circular Mask diameter**: 350A.
 - **Mask particles with zeros**: Yes
 - **Use blush regularization**: No
 - **Initial angular sampluing interval**: 7.5 deg
@@ -396,11 +392,11 @@ Using the initial model, it is possible to refine it to enhance the map quality 
 - **Use finer angulat sampling faster**: No
 - **Prior width on tilt angle**: -1
 
+![relionAutorefinebin8Form](celullarEnvironment/cellEnv_autorefine_bin8Form.png)
 
 The result of this protocol should be similar to the one shown in the Figure.
 
-![relionAutorefinebin6Result](celullarEnvironment/relionAutorefine1_bin8.png)
-![relionAutorefinebin6Result](celullarEnvironment/relionAutorefine2_bin8.png)
+![relionAutorefinebin8Result](celullarEnvironment/cellEnv_autorefine_bin8_result.png)
 
 ## Extract pseudo-subtomograms at bin 4
 
