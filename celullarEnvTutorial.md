@@ -411,7 +411,7 @@ This steps shows how to reduce the binning keeping the alignment of already refi
 - **Maximum dose**: 50 e/A^2.
 - **Write output as 2D stacks**: No
 
-![extractbin4](celullarEnvironment/relionExtractSubtomos_bin8.png)
+![extractbin4Form](celullarEnvironment/cellEnv_relionExtract_bin4Form.png)
 
 
 ## Reconstruct particle at bin 4
@@ -429,6 +429,7 @@ In this step the refined pseudo-subtomograms from the previous autorefine are us
 
 The reconstructed protein can be visualized with Scipion (to see the slices) or with Chimera (to see the 3D map). As it can be observed in the figure the map quality enhanced in comparison to the reconstruction at bin 8. 
 
+![extractbin4Form](celullarEnvironment/cellEnv_relionReconsBin4_result.png)
 
 ## Refine volume at bin 4
 
