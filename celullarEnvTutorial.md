@@ -222,15 +222,15 @@ The output can be visualized by clicking on Analyze results or alternatively by 
 
 ![IMODSIRTtomoResult](celullarEnvironment/cellEnv_imodRec_result.png)
 
-# Denoising
+# Denoising with cryoCARE
 
-The tomograms can be denoised with
+**Reference**: [T.O. Bucholtz 2019](https://doi.org/10.1016/bs.mcb.2019.05.001)
 
-* tomo3d - denoise tomograms
-* cryocare
+**Plugin**: [scipion-em-cryocare](https://github.com/scipion-em/scipion-em-cryocare)
 
-For this tutorial `cryocare` will be used. 
+The denoising of the tomogram will be carried out with cryoCARE. This method makes use of two half tomograms, odd and even tomograms. These two tomograms should be reconstructed with with same alignment information, but with different movie frames. During the movie alignment we obtain three tilt series: The full tilt series, the odd tilt series and the even tilt series. The last two are the result of averaging the odd and even movies frames respectively. During the tilt series alignment, the full tilt series was used. Therefore, 3 tomograms were reconstructed: the full tomogram, the odd tomogram and the even tomogram. Cryocare will use the odd and even tomograms. 
 
+Cryocare workflow is split in two steps: training and prediction.
 
 ## cryoCARE training
 
