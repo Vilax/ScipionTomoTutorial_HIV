@@ -293,7 +293,7 @@ When the dose filter was applied to align the tilt series, the dose of the align
 
 Note that the output of `tomo - tilt-series assign alignment` presents a non-zero dose. This can be checked by by visualizing the tilt series with `TomoViewer`, see figure.
 
-![resultAssignTransform](HIVTutorial/resultAssignTransform.png)
+![resultAssignTransform](HIVTutorial/HIV_assignAli_result.png)
 
 
 # CTF estimation
