@@ -256,7 +256,7 @@ The output of this protocol is a new object, a cryoCARE model, that can only be 
 
 ![cryocarepredictionForm](celullarEnvironment/cellEnv_cryoCAREpredictionForm.png)
 
-![cryocarepredictionResult](celullarEnvironment/cellEnv_cryoCAREpredictionForm.png)
+![cryocarepredictionResult](celullarEnvironment/cellEnv_cryoCAREprediction_result.png)
 
 # Picking
 
@@ -339,10 +339,11 @@ To extract the pseudo subtomograms the next input data will be required:
 - **Write output as 2D stacks**: No. 
 
 
-![relionTomoExtract](celullarEnvironment/relionExtractSubtomos.png)
+![relionTomoExtract](celullarEnvironment/cellEnv_relionExtract_bin8Form.png)
 
 > **Tip**: The 3D pseudo-subtomograms work better for obtaining a 3D initial model than the 2D pseudo-subtomograms.
 
+![relionTomoExtract](celullarEnvironment/cellEnv_relionExtract_bin8_result.png)
 
 ## Initial model
 
