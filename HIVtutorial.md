@@ -389,7 +389,12 @@ To reconstruct the tomogram from the tilt series the protocol `tomo3d - reconstr
 
 > **Tip**: WBP is faster than the SIRT method, but SIRT provides higher contrast. To visualize cellular enviroments SIRT is recommended, or to pick subtomogram with a template matching approach. If classical subtomogram averaging is going to be carried out, WBP is recommended.
 
-The input of the reconstruction will be the binned CTF corrected tilt series. A SIRT recontruction is recommended in this case to produced tomograms with high contrast. The `Tomogram Thickness` was set to 300 voxels.
+The input of the reconstruction will be the previous reconstructed tomograms with the next parameters:
+
+ - **Tomograms**: The reconstructed ones
+ - **Denoising method**: Edge-Enhancing Diffusion (EED).
+ - **Sigma Gaussian Filter**: 0.5
+ - **Number of iterations**: 10
 
 ![tomo3d](HIVTutorial/HIV_tomo3dForm.png)
 
