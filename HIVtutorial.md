@@ -397,7 +397,21 @@ The output can be visualized by clicking on Analyze results or alternatively by 
 
 ![tomo3dSIRTtomo](HIVTutorial/HIV_tomo3d_result.png)
 
+# Tomogram denoising with tomo3D
 
+**Reference**: [J.J. Moreno 2018](https://doi.org/10.1093/bioinformatics/bty435)[J.J. Moreno 2018](https://doi.org/10.1093/bioinformatics/bty435)
+
+**Plugin**: [scipion-em-tomo3d](https://github.com/scipion-em/scipion-em-tomo3d)
+
+To highlight the signal o the HIV it is possible to use a denoising algorithm. In this case, the procol `tomo3d - denoise tomogram`. Tomo3D provides two different denoising algorithms: EDD and Bflow. In this tutorial the EED mehtod will be used.
+
+The input of the reconstruction will be the binned CTF corrected tilt series. A SIRT recontruction is recommended in this case to produced tomograms with high contrast. The `Tomogram Thickness` was set to 300 voxels.
+
+![tomo3ddenoise](HIVTutorial/HIV_tomo3dDenoising_Form.png)
+
+The output can be visualized by clicking on Analyze results or alternatively by choosing the visualization tool by right-clicking on the output in the Summary box. In 3dmod, it is interesting to visualize the tomogram in slices along the 3 axis, this can be done with `Ctrl+x`
+
+![tomo3ddenoiseResult](HIVTutorial/HIV_tomo3dDenoising_result.png)
 # Directional picking with dynamo
 
 **Reference**: [D. Castaño-Diez et.al 2012](https://doi.org/10.1016/j.jsb.2011.12.017)
