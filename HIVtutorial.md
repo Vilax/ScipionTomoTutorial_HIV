@@ -434,7 +434,7 @@ This section shows how to pick with dynamo, however, to avoid the manual task of
 
 The reconstructed present several several HIV virus. In our case we are interested in the reconstruction of structure of the immature capsid lattice. To do that, tt is neccesary to identify the capsid in the tomograms. The protocol `dynamo - vectorial picking` will be used. The parameter boxsize only has a visualization purpose (size of the plotted points on the tomogram), it does not affect to the picked coordinates. 
 
-![dynamoPicking](HIVTutorial/dynamoPicking.png)
+![dynamoPicking](HIVTutorial/HIV_vecPickingForm.png)
 
 > **Note**: For the small set tutorial only one or two viruses will be picked. For the large dataset tutorial, all viruses will be picked. To avoid manual picking the coordinates can be imported later in te tutorial.
 
