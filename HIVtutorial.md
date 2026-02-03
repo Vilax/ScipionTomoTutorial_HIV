@@ -349,7 +349,9 @@ CTFs can be excluded with the `CTFTomoViewer`. The main reasons to exclude a CTF
 
 The CTF correction can be performed with the protocol `imod - correct CTF`. The input of this protocol are the tilt series with assigned alignment and a set of CTFs previously estimated. The tilt series will be the ones we assigned the alignment information. The used parameters for this protocol will be left as default parameters.
 
-![FormImodCTFcorr](HIVTutorial/imodCTFcorr.png)
+> Warning: The output of the CTF correction is a set of tilt series with the alignment applied. This is because Imod applies the alignment to correct the CTF in strips parallel to the tilt axis
+
+![FormImodCTFcorr](HIVTutorial/HIV_imodCTFcorrForm.png)
 
 # Tilt series preprocess
 
@@ -362,7 +364,7 @@ The CTF-corrected tilt series will be the input data for a later tomogram recons
 > For the tutorial that uses the small dataset, use bin 6
 > For the tutorial that uses the large dataset, use bin 4
 
-![imodTsPreprocess](HIVTutorial/imodTsPreprocess.png)
+![imodTsPreprocess](HIVTutorial/HIV_imodpreprocessForm.png)
 
 ## Tomogram reconstruction
 
