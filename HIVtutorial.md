@@ -135,6 +135,8 @@ To exclude a tilt images just select the corresponding image and press the `spac
 
 The views to exclude for the small dataset are the ones at -60.0º, -57.0º, -54.0º and 60.0º. In this tutorial we will use the re-stacked tilt series.
 
+> **Tip**: We remove the dark images but also those views that present a significant displacement.
+
 ![excludeTsViewer](HIVTutorial/exclViews_TS_03.png)
 
 # X-ray eraser
@@ -153,7 +155,7 @@ This protocol is completely optional and is not included in most of the workflow
 
 **Plugin**: [scipion-em-imod](https://github.com/scipion-em/scipion-em-imod)
 
-Once the tilt Series are free of X-rays peaks, the effect of the radiation damage should be taken into account. This is not a mandatory step, but it is a good practice. During the image acquisition the sample is exposed to the radiation. Each tilt image has associated a different accumulated dose. The protocol `imod - dose filter` applies a low pass filter based on the accumulated dose per tilt image. The result will be a set of tilt series, but with a dose correction that makes the images look like a low pass filtered version of the original ones (with a soft graining).
+The effect of the radiation damage should be taken into account. This is not a mandatory step, but it is also a good practice. During the image acquisition the sample is exposed to the radiation. Each tilt image has associated a different accumulated dose. The protocol `imod - dose filter` applies a low pass filter based on the accumulated dose per tilt image. The result will be a set of tilt series, but with a dose correction that makes the images look like a low pass filtered version of the original ones (with a soft graining).
 
 The protocol can be executed with the default parameters.
 
