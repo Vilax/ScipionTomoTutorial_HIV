@@ -254,7 +254,15 @@ The output of this protocol is a new object, a cryoCARE model, that can only be 
 
 ## cryoCARE prediction
 
-Once the cryoCARE model has been trained, it can be applied to the reconstructed tomograms. 
+Once the cryoCARE model has been trained, it can be applied to the reconstructed tomograms. The parameter are:
+
+- **Tomograms**: The reconstructed tomograms with imod
+- **cryoCARE model**: The previous trained cryoCARE model
+- **Number of tiles**: 8
+
+> Tip: This protocol can be prone to run out of memory (failure), if this happens increase the number of tiles
+
+
 ![cryocarepredictionForm](celullarEnvironment/cellEnv_cryoCAREpredictionForm.png)
 
 The result of the prediction can be visualized with the `tomoViewer` opening the tomograms with `imod-3dmod` as it is shown in the figure. Note how the ribosome are clearly visible in the tomogram.
