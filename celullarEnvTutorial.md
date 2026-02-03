@@ -216,9 +216,11 @@ The protocol can be executed with default parameters:
 - **Cutoff linear region**: 0.35
 - **Radial fall-off**: 0.035
 
-![IMODSIRTtomo](celullarEnvironment/imodTomoReconstruction.png)
+![IMODSIRTtomo](celullarEnvironment/cellEnv_imodRecForm.png)
 
 The output can be visualized by clicking on Analyze results or alternatively by choosing the visualization tool by right-clicking on the output in the Summary box.
+
+![IMODSIRTtomoResult](celullarEnvironment/cellEnv_imodRec_result.png)
 
 # Picking
 
