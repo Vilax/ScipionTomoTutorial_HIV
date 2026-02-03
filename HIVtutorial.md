@@ -265,8 +265,6 @@ The output tilt series as result of the alignment process can be visualized with
 
 The fiducials trajectories can also be observed opening the output SetOfLandmarks with imod-3dmod, and pressing the key `v`.
 
-![outputFiducialAlignmentviewer](HIVTutorial/HIV_fidali_result.png)
-
 # Fiducial eraser
 
 **Reference**: [TeamTomo](https://github.com/teamtomo/fidder)
@@ -335,13 +333,11 @@ The CTF will be estimated with the protocol `cistem - tilt-series ctffind`. The 
 
 The result of any CTF estimation that can be visualized by clicking on Analyze results or alternatively by right-clicking on the output, in the Summary panel (low area of the main Scipion window). The viewer will open a window with the list of SetOfCTFTomoSeries corresponding to each tilt series. In this window the defocus, astigmatism and resolution associated to each tilt image can be visualized. Also, the window presents a summary plot with the defocus and resolution per tilt image. This plot will be of special interest to validate the estimation of the CTF.
 
-![CTFviewer](HIVTutorial/CTFviewer.png)
-
 # Excluding CTFs
 
-CTFs can be excluded with the `CTFTomoViewer`. The main reasons to exclude a CTF are: a bad estimation of the defocus value, or a high astigmatism. To exclude a CTF just select the corresponding CTF and press the `space`, alternatively it can be marked by clicking on the exclude box. The excluded CTFs will be highlighted in red. Finally, it is neccesary to generate a new set of CTF by clicking on the botton `Generate subsets`. 
+CTFs can be excluded with the `CTFTomoViewer`. The main reasons to exclude a CTF are: a bad estimation of the defocus value, or a high astigmatism. To exclude a CTF just select the corresponding CTF and press the `space`, alternatively it can be marked by clicking on the exclude box. The excluded CTFs will be highlighted in red. Finally, it is neccesary to generate a new set of CTF by clicking on the botton `Generate subsets`. Despite some resolution values are out of range, the defocus estimations are in range, for this reason only the out of range views are excluded.
 
-![excludeCTFViewer](HIVTutorial/exclDef_TS_03.png)
+![CTFviewer](HIVTutorial/HIV_CTFcistem_result.png)
 
 # CTF correction
 
